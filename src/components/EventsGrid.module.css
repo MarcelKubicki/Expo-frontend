@@ -1,0 +1,7 @@
+.eventsGrid {
+  padding: 25px 80px 0 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 45px;
+  row-gap: 25px;
+}

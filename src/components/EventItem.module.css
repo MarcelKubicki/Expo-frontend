@@ -1,0 +1,44 @@
+.item {
+  background-color: rgb(202, 202, 202);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.thumbnail {
+  width: 100%;
+  border-radius: 15px 15px 100px 15px;
+  box-shadow: 0 1px 10px black;
+}
+
+.content {
+  padding: 7px 18px 15px 18px;
+}
+
+.date p {
+  font-size: 17px;
+}
+.desc {
+  font-size: 16px;
+  font-weight: 300;
+}
+.date {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 26px;
+  margin-bottom: 8px;
+}

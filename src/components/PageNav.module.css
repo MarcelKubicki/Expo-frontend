@@ -1,0 +1,50 @@
+.header {
+  background-color: lightslategray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 200px;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+.nav div {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.nav p {
+  font-size: 19px;
+}
+
+.navOption {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navOption:hover {
+  background-color: rgb(134, 154, 174);
+  border-bottom: 5px solid white;
+}
+
+.loginBtn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: 300;
+}
