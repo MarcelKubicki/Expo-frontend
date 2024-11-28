@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import styles from "./PageNav.module.css";
 
 function PageNav() {
@@ -5,14 +6,16 @@ function PageNav() {
     <nav className={styles.header}>
       <h1 style={{ fontSize: "40px" }}>EXPO</h1>
       <div className={styles.nav}>
-        <div className={styles.navOption}>
+        <NavLink to="/" className={styles.navOption}>
           <p>Kalendarium</p>
-        </div>
-        <div className={styles.navOption}>
+        </NavLink>
+        <NavLink to="/aboutUs" className={styles.navOption}>
           <p>O nas</p>
-        </div>
-        <div className={styles.logiOption}>
-          <button className={styles.loginBtn}>Login</button>
+        </NavLink>
+        <div>
+          <Link to="/login">
+            <button className={styles.loginBtn}>Login</button>
+          </Link>
         </div>
       </div>
     </nav>
