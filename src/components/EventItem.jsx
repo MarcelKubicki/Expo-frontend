@@ -8,8 +8,14 @@ function EventItem({ thumbnail, title, desc }) {
         <img className={styles.thumbnail} src={thumbnail} />
         <div className={styles.content}>
           <div className={styles.date}>
-            <img src="calendar.png" className={styles.icon} />
-            <p>26 - 28 listopada 2024</p>
+            <div>
+              <img src="calendar.png" className={styles.icon} />
+              <p>26 - 28 listopada 2024</p>
+            </div>
+            <div>
+              <img src="localization.png" className={styles.icon} />
+              <p>Kielce</p>
+            </div>
           </div>
           <p className={styles.title}>{title}</p>
           <p className={styles.desc}>{desc}</p>

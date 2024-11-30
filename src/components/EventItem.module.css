@@ -26,15 +26,19 @@
 }
 
 .date p {
-  font-size: 17px;
+  font-size: 15px;
 }
 .desc {
   font-size: 16px;
   font-weight: 300;
 }
-.date {
+.date div {
   display: flex;
   align-items: center;
+}
+.date {
+  display: flex;
+  gap: 8px;
 }
 
 .icon {

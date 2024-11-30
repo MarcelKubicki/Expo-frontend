@@ -22,8 +22,9 @@ function Selector() {
           Miesiac
         </option>
         <option>Wszystkie</option>
-        <option>Stycznen</option>
+        <option>Styczen</option>
         <option>Luty</option>
+        <option>Marczec</option>
       </select>
     </div>
   );

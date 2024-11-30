@@ -1,0 +1,8 @@
+.svg {
+  background-color: rgb(217, 217, 217);
+}
+.svg rect:hover {
+  stroke: rgb(0, 171, 0);
+  stroke-width: 2px;
+  cursor: pointer;
+}

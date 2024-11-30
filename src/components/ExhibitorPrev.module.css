@@ -1,0 +1,14 @@
+.prevContainer {
+  background-color: rgb(238, 238, 238);
+  flex: 1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.prevContainer p {
+  color: rgb(106, 106, 106);
+  width: 80%;
+}
