@@ -23,20 +23,25 @@
 
 .content {
   padding: 7px 18px 15px 18px;
+  position: relative;
 }
 
-.date p {
-  font-size: 15px;
+.row p {
+  font-size: 14px;
 }
 .desc {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
+  color: rgb(86, 86, 86);
+  margin-bottom: 10px;
+  min-height: 2lh;
 }
-.date div {
+
+.row div {
   display: flex;
   align-items: center;
 }
-.date {
+.row {
   display: flex;
   gap: 8px;
 }
@@ -49,5 +54,16 @@
 .title {
   font-weight: bold;
   font-size: 26px;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
+}
+
+.tile {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+#stats {
+  position: absolute;
+  bottom: 0;
 }

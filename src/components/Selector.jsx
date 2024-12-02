@@ -1,4 +1,5 @@
 import styles from "./Selector.module.css";
+import { categories } from "../../data/categories";
 
 function Selector() {
   return (
@@ -13,19 +14,15 @@ function Selector() {
         <option disabled selected>
           Kategoria
         </option>
-        <option>Wszystkie</option>
-        <option>Budowlane</option>
-        <option>Motoryzacja</option>
+        {categories.map((c) => (
+          <option key={c.value} value={c.value}>
+            {c.name}
+          </option>
+        ))}
       </select>
-      <select className={styles.select}>
-        <option disabled selected>
-          Miesiac
-        </option>
-        <option>Wszystkie</option>
-        <option>Styczen</option>
-        <option>Luty</option>
-        <option>Marczec</option>
-      </select>
+
+      <input type="date" className={styles.select} />
+      <input type="date" className={styles.select} />
     </div>
   );
 }

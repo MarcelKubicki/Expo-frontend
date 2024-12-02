@@ -14,7 +14,7 @@ function PageNav() {
         </NavLink>
         <div>
           <Link to="/login">
-            <button className={styles.loginBtn}>Login</button>
+            <button className={styles.loginBtn}>Zaloguj</button>
           </Link>
         </div>
       </div>
