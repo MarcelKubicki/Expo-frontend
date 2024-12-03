@@ -13,11 +13,11 @@ function Footer() {
       <div className={styles.contact}>
         <h4>Kontakt</h4>
         <div>
-          <img src="phone-call.png" />
+          <img src="/phone-call.png" />
           <p>+48 123 234 547</p>
         </div>
         <div>
-          <img src="mail.png" />
+          <img src="/mail.png" />
           <p>biuro@expo.pl</p>
         </div>
       </div>

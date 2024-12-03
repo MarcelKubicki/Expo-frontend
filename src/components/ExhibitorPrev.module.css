@@ -1,14 +1,36 @@
 .prevContainer {
-  background-color: rgb(238, 238, 238);
-  flex: 1;
-  border-radius: 10px;
+  background-color: rgb(109, 109, 109);
+  color: white;
+  padding: 13px 15px;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
-  text-align: center;
-  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  position: relative;
 }
-
-.prevContainer p {
-  color: rgb(106, 106, 106);
-  width: 80%;
+.prevContainer img {
+  width: 80px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.moreInfo {
+  padding: 8px 15px;
+  margin: -5px 4px 5px 4px;
+  background-color: rgb(211, 211, 211);
+  border-radius: 0 0 5px 5px;
+}
+.standNumber {
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
+.arrow {
+  position: absolute;
+  right: 15px;
+}
+.arrow img {
+  width: 25px;
+  transition: transform 0.6s;
 }

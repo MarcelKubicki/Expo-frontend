@@ -7,6 +7,7 @@ function EventsGrid({ events }) {
       {events.map((event) => (
         <EventItem
           key={event.id}
+          id={event.id}
           thumbnail={event.img_url}
           title={event.nazwa}
           localization={event.lokalizacja}

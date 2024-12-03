@@ -12,7 +12,7 @@ function App() {
         <Route index element={<Homepage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/event" element={<EventPage />} />
+        <Route path="/event/:eventId" element={<EventPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

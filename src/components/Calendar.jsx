@@ -9,8 +9,7 @@ function Calendar() {
     async function fetchEvents() {
       const res = await fetch("http://127.0.0.1:8000/all_events");
       const data = await res.json();
-      setEvents(data["data"]);
-      console.log(data);
+      setEvents(data);
     }
     fetchEvents();
   }, []);

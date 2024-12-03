@@ -1,16 +1,5 @@
-.exhibList ul {
-  list-style-type: none;
-  columns: 3;
-}
-.exhibList li {
-  background-color: rgb(220, 220, 220);
-  padding: 15px 40px;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-.exhibList li img {
-  height: 70px;
+.exhibList {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
 }

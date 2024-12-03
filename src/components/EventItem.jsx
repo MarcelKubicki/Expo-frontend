@@ -21,7 +21,7 @@ function getFormattedDate(startDateStr, endDateStr) {
   const endDate = new Date(endDateStr);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
 
-  return `${startDate.getDate()}${
+  return `${startDate.getDate()} ${
     isSameMonth ? "" : months[startDate.getMonth()]
   } - ${endDate.getDate()} ${
     months[endDate.getMonth()]
@@ -29,6 +29,7 @@ function getFormattedDate(startDateStr, endDateStr) {
 }
 
 function EventItem({
+  id,
   thumbnail,
   title,
   desc,
@@ -37,10 +38,9 @@ function EventItem({
   startDate,
   endDate,
 }) {
-  console.log(startDate, endDate);
   return (
     <div className={styles.item}>
-      <Link to="/event">
+      <Link to={`/event/${id}`}>
         <img className={styles.thumbnail} src={thumbnail} />
         <div className={styles.content}>
           <div className={styles.row}>
