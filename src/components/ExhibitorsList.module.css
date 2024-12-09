@@ -1,5 +1,17 @@
-.exhibList {
+.listContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.listContainer .exhibList {
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: rgb(231, 231, 231);
+}
+.listContainer h2 {
+  text-align: center;
+  padding: 15px 5px;
+  border: 5px solid black;
+  margin-bottom: 15px;
 }

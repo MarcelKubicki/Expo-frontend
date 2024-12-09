@@ -2,14 +2,23 @@ import { useEffect } from "react";
 import styles from "./ExhibitorPrev.module.css";
 
 function ExhibitorPrev({
-  id,
-  img_url,
-  name,
+  exhibitorData,
   selectedStand,
   setSelectedStand,
   itemRefs,
   scrollableContainerRef,
 }) {
+  const {
+    nr_stoiska: id,
+    img_url,
+    nazwa: name,
+    telefon: tel,
+    adres,
+    mail,
+    strona_url: side,
+    opis,
+  } = exhibitorData;
+
   useEffect(
     function () {
       if (selectedStand === id) {
@@ -41,7 +50,11 @@ function ExhibitorPrev({
         <p className={styles.standNumber}>
           <b>{id < 10 ? `0${id}` : id}</b>
         </p>
-        <img src={img_url} />
+        {img_url ? (
+          <img src={img_url} />
+        ) : (
+          <div className={styles.img_alt}></div>
+        )}
         <p>{name}</p>
         <div className={styles.arrow}>
           <img
@@ -53,18 +66,29 @@ function ExhibitorPrev({
       </li>
       {selectedStand === id && (
         <div className={styles.moreInfo}>
-          <p>Adres: Al. Jana Pawła II 39 A, 31-864 Kraków, Polska</p>
-          <p>Mail: info@comarch.com</p>
-          <p>Strona: www.comarch.pl</p>
-          <p>Opis</p>
-          <p>
-            Comarch został założony w 1993 roku w Krakowie, a od 1999 roku jest
-            notowany na warszawskiej Giełdzie Papierów Wartościowych. Jest jedną
-            z największych firm informatycznych w Europie i prowadzi projekty
-            dla czołowych marek z Polski i świata w najważniejszych sektorach
-            gospodarki m.in.: telekomunikacji, finansach, bankowości i
-            ubezpieczeniach, handlu i usług, infrastruktury IT,
-          </p>
+          <div className={styles.basicInfoContainer}>
+            <img src={img_url} />
+            <div className={styles.rowsContatiner}>
+              <p>
+                <b>{name}</b>
+              </p>
+              <div className={styles.row}>
+                <img src="/localization.png" />
+                <p>{adres}</p>
+              </div>
+              <div className={styles.row}>
+                <img src="/mail.png" />
+                <p>{mail}</p>
+              </div>
+              <div className={styles.row}>
+                <img src="/domain.png" />
+                <a href={side}>{side}</a>
+              </div>
+            </div>
+          </div>
+
+          <p className={styles.descTag}>Opis</p>
+          <div dangerouslySetInnerHTML={{ __html: `${opis}` }}></div>
         </div>
       )}
     </div>

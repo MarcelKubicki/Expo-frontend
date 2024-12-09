@@ -11,9 +11,8 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
 
   return (
     <>
-      {/* <div className={styles.title}>
-        <h2>Plan rozmieszczenia stoisk</h2>
-      </div> */}
+      <h2 className={styles.title}>Plan rozmieszczenia stoisk</h2>
+
       <svg
         viewBox="0 0 359 608"
         fill="none"

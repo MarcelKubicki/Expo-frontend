@@ -9,6 +9,9 @@ function PageNav() {
         <NavLink to="/" className={styles.navOption}>
           <p>Kalendarium</p>
         </NavLink>
+        <NavLink to="/catalog" className={styles.navOption}>
+          <p>Katalog wystawców</p>
+        </NavLink>
         <NavLink to="/aboutUs" className={styles.navOption}>
           <p>O nas</p>
         </NavLink>

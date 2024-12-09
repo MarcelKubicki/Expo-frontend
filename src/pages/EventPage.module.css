@@ -70,12 +70,14 @@
 .eventPage .planContainer {
   display: flex;
   gap: 10px;
-  height: 610px;
+  height: 690px;
+  margin-top: 70px;
 }
 .mapContainer {
   width: 100%;
   height: 200px;
   flex: 2;
+  border: 2px solid black;
 }
 .map {
   height: 100%;
