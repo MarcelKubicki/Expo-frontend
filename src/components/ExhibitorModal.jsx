@@ -1,54 +1,76 @@
+import { useEffect, useState } from "react";
 import styles from "./ExhibitorModal.module.css";
 
-function ExhibitorModal() {
+function ExhibitorModal({ selectedExhibitor, setSelectedExhibitor }) {
+  const [
+    { exhib_name, img_url, tel, adres, mail, site_url, description, history },
+    setExhibInfo,
+  ] = useState({});
+
+  useEffect(
+    function () {
+      async function getExhibInfo() {
+        const res = await fetch(
+          `http://127.0.0.1:8000/api/v1/exhibitors/${selectedExhibitor}`
+        );
+        const data = await res.json();
+        console.log(data);
+        setExhibInfo(data);
+      }
+
+      getExhibInfo();
+    },
+    [selectedExhibitor]
+  );
+
+  if (!selectedExhibitor) {
+    return (
+      <div className={styles.modalUnactive}>
+        <p>Wybierz wystawce z listy aby wyświetlić więcej informacji...</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.modal}>
-      <button className={styles.closeBtn}>X</button>
+      <button
+        className={styles.closeBtn}
+        onClick={() => setSelectedExhibitor(null)}
+      >
+        X
+      </button>
 
       <div className={styles.basicInfoContainer}>
-        <img src="/razer_logo.jpg" />
+        <img src={img_url} />
         <div className={styles.rowsContatiner}>
           <p>
-            <b>name</b>
+            <b>{exhib_name}</b>
           </p>
           <div className={styles.row}>
             <img src="/localization.png" />
-            <p>adres</p>
+            <p>{adres}</p>
           </div>
           <div className={styles.row}>
             <img src="/mail.png" />
-            <p>mail</p>
+            <p>{mail}</p>
           </div>
           <div className={styles.row}>
             <img src="/domain.png" />
-            <a>side.com</a>
+            <a>{site_url}</a>
           </div>
         </div>
       </div>
 
       <p className={styles.descTag}>Opis</p>
-      <div>
-        {" "}
-        Firma inżynierska z ponad 30-letnią tradycją. Doświadczenie oraz
-        kompetencje pracowników pozwalają na wdrażanie profesjonalnych rozwiązań
-        z zakresu łączności dla służb odpowiedzialnych za utrzymanie
-        bezpieczeństwa i porządku publicznego, wojska, przemysłu, transportu,
-        energetyki oraz innych przedsiębiorstw. Wśród propozycji firmy AKSEL dla
-        klientów znajdują się m.in.: systemy radiokomunikacyjne TETRA, DMR i
-        szerokopasmowe PTT, radiotelefony i akcesoria w tym kamuflowane,
-        specjalistyczne systemy teleinformatyczne oraz profesjonalne szkolenia
-        techniczne. Istotną pozycją w ofercie jest oprogramowanie dyspozytorskie
-        ConSEL, będące autorskim rozwiązaniem firmy AKSEL, które uzyskało
-        akredytację Motorola Solutions do współpracy z urządzeniami MOTOTRBO i
-        TETRA. ConSEL zapewnia szeroki wachlarz usług i funkcjonalności, a jako
-        oprogramowanie otwarte i elastyczne może być dostosowywane do
-        specyficznych wymagań klienta. Autoryzowany dystrybutor i partner
-        aplikacyjny MOTOROLA.
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: description }}></div>
       <p className={styles.descTag}>Historia wystąpień</p>
-      <ul>
-        <li>26-28.08.2024 Rosół Expo Kielce</li>
-      </ul>
+      {history && (
+        <ul>
+          {history.map((e) => (
+            <li key={e.event_name}>{`${e.date_start} ${e.event_name}`}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

@@ -12,9 +12,9 @@ function PageNav() {
         <NavLink to="/catalog" className={styles.navOption}>
           <p>Katalog wystawców</p>
         </NavLink>
-        <NavLink to="/aboutUs" className={styles.navOption}>
+        {/* <NavLink to="/aboutUs" className={styles.navOption}>
           <p>O nas</p>
-        </NavLink>
+        </NavLink> */}
         <div>
           <Link to="/login">
             <button className={styles.loginBtn}>Zaloguj</button>

@@ -31,7 +31,9 @@ function EventPage() {
   useEffect(
     function () {
       async function fetchEvent() {
-        const res = await fetch(`http://127.0.0.1:8000/event/${eventId}`);
+        const res = await fetch(
+          `http://127.0.0.1:8000/api/v1/events/${eventId}`
+        );
         const data = await res.json();
         setEvent(data);
         setMapPosition([data.lat, data.lng]);
@@ -58,15 +60,15 @@ function EventPage() {
             <div className={styles.data}>
               <div className={styles.dataColumn}>
                 <div className={styles.title}>
-                  <p>{event.nazwa}</p>
+                  <p>{event.event_name}</p>
                 </div>
                 <div className={styles.date}>
                   <img src="/calendar.png" alt="calendar_icon" />
-                  <p>{getFormattedDate(event.data_rozpo, event.data_zakon)}</p>
+                  <p>{getFormattedDate(event.date_start, event.date_end)}</p>
                 </div>
                 <div className={styles.date}>
                   <img src="/localization.png" alt="localization_icon" />
-                  <p>{event.lokalizacja}</p>
+                  <p>{event.loc_name}</p>
                 </div>
               </div>
               <div className={styles.mapContainer}>
@@ -88,7 +90,7 @@ function EventPage() {
             </div>
             <div
               className={styles.description}
-              dangerouslySetInnerHTML={{ __html: `${event.opis}` }}
+              dangerouslySetInnerHTML={{ __html: `${event.long_desc}` }}
             ></div>
             <div className={styles.galery}>
               <img src="https://foodtechexpo.pl/doc/galeria/mini/1.webp" />
@@ -110,7 +112,7 @@ function EventPage() {
             setSelectedStand={setSelectedStand}
             scrollableContainerRef={scrollableContainerRef}
             itemRefs={itemRefs}
-            exhibs={event.wystawcy}
+            exhibs={event.exhibitors}
           />
         </div>
       </main>

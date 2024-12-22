@@ -7,15 +7,27 @@
   text-align: justify;
   padding: 15px 25px;
 }
+.modalUnactive {
+  width: 90%;
+  height: 90%;
+  border: 2px dashed black;
+  border-radius: 10px;
+  background-color: rgb(221, 221, 221);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(95, 95, 95);
+}
 .closeBtn {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -11px;
+  right: -11px;
   background-color: black;
   color: white;
-  padding: 7px 11px;
+  padding: 8px 11px;
   border: none;
-  border-radius: 40px;
+  border-radius: 45px;
   cursor: pointer;
 }
 

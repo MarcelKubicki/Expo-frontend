@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Banner from "../components/Banner";
 import ExhibitorDetails from "../components/ExhibitorDetails";
 import ExhibitorsFinder from "../components/ExhibitorsFinder";
@@ -6,6 +7,7 @@ import PageNav from "../components/PageNav";
 import styles from "./CatalogPage.module.css";
 
 function CatalogPage() {
+  const [selectedExhibitor, setSelectedExhibitor] = useState(null);
   return (
     <>
       <PageNav />
@@ -17,8 +19,14 @@ function CatalogPage() {
         </p>
       </Banner>
       <main className={styles.catalogPage}>
-        <ExhibitorsFinder />
-        <ExhibitorDetails />
+        <ExhibitorsFinder
+          selectedExhibitor={selectedExhibitor}
+          setSelectedExhibitor={setSelectedExhibitor}
+        />
+        <ExhibitorDetails
+          selectedExhibitor={selectedExhibitor}
+          setSelectedExhibitor={setSelectedExhibitor}
+        />
       </main>
       {/* <Footer /> */}
     </>

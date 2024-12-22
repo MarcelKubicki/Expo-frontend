@@ -9,14 +9,14 @@ function ExhibitorPrev({
   scrollableContainerRef,
 }) {
   const {
-    nr_stoiska: id,
+    stand_num: id,
     img_url,
-    nazwa: name,
-    telefon: tel,
+    exhib_name: name,
+    tel,
     adres,
     mail,
-    strona_url: side,
-    opis,
+    site_url: site,
+    description,
   } = exhibitorData;
 
   useEffect(
@@ -82,13 +82,13 @@ function ExhibitorPrev({
               </div>
               <div className={styles.row}>
                 <img src="/domain.png" />
-                <a href={side}>{side}</a>
+                <a href={site}>{site}</a>
               </div>
             </div>
           </div>
 
           <p className={styles.descTag}>Opis</p>
-          <div dangerouslySetInnerHTML={{ __html: `${opis}` }}></div>
+          <div dangerouslySetInnerHTML={{ __html: `${description}` }}></div>
         </div>
       )}
     </div>

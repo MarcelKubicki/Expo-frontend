@@ -14,7 +14,7 @@ function ExhibitorsList({
       <div className={styles.exhibList} ref={scrollableContainerRef}>
         {exhibs.map((e) => (
           <ExhibitorPrev
-            key={e.nazwa}
+            key={e.exhib_name}
             exhibitorData={e}
             selectedStand={selectedStand}
             setSelectedStand={setSelectedStand}
@@ -23,91 +23,120 @@ function ExhibitorsList({
           />
         ))}
         {/* <ExhibitorPrev
-          id={1}
-          img_url="/razer_logo.jpg"
-          name="Razer"
+          exhibitorData={{
+            stand_num: 3,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={2}
-          img_url="/hyperx.jpg"
-          name="HyperX"
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-
-        <ExhibitorPrev
-          id={3}
-          img_url="/razer_logo.jpg"
-          name="Megamar logistics & consulting Sp.z o.o."
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          id={4}
-          // img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 4,
+            img_url: "/hyperx.jpg",
+            exhib_name: "HyperX",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={5}
-          img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 5,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={6}
-          img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 6,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={7}
-          img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 7,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={8}
-          img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 8,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={9}
-          img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 9,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}
           scrollableContainerRef={scrollableContainerRef}
         />
         <ExhibitorPrev
-          id={10}
-          img_url="/razer_logo.jpg"
-          name="Autocomp Managment Sp. z. o.o."
+          exhibitorData={{
+            stand_num: 10,
+            img_url: "/razer_logo.jpg",
+            exhib_name: "Razer",
+            adres: "Kielce ul. Jana Pawła 4",
+            mail: "razer@razer.pl",
+            site: "razer.pl",
+            description: "elo",
+          }}
           selectedStand={selectedStand}
           setSelectedStand={setSelectedStand}
           itemRefs={itemRefs}

@@ -2,23 +2,39 @@
   background-color: rgb(109, 109, 109);
   color: white;
   padding: 13px 15px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   cursor: pointer;
-  border-radius: 5px 5px 0 0;
+  border-radius: 7px;
   position: relative;
+  transition: background-color 0.2s;
 }
+.prevContainer:hover,
+.activePrevContainer {
+  background-color: black;
+}
+
 .prevContainer img {
-  width: 80px;
+  width: 85px;
   margin-right: 10px;
   margin-left: 10px;
+  background-color: white;
 }
-.arrow {
+.category {
+  font-size: 14px;
   position: absolute;
   right: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  padding: 3px 7px;
 }
-.arrow img {
-  width: 25px;
-  transition: transform 0.6s;
+.name {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.description p {
+  font-size: 13px;
 }

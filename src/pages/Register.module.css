@@ -41,6 +41,25 @@
   background-color: lightpink;
   margin: 5px 0;
 }
+.login .inputHint {
+  background-color: rgb(80, 80, 80);
+  color: white;
+  font-size: 13px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px 0;
+  width: 275px;
+}
 .login .invisible {
   display: none;
+}
+.login .form .row .correct {
+  border: 2px solid rgb(44, 166, 44);
+}
+.login .form .row .incorrect {
+  border: 2px solid rgb(193, 5, 46);
+}
+.login .form button:disabled {
+  cursor: auto;
+  background-color: rgba(0, 0, 0, 0.166);
 }

@@ -10,18 +10,17 @@ function Calendar() {
   const [localization, setLocalization] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-
   useEffect(
     function () {
       async function fetchEvents() {
         const res = await fetch(
-          "http://127.0.0.1:8000/events?" +
+          "http://127.0.0.1:8000/api/v1/events?" +
             new URLSearchParams({
               nam: eventName,
               cat: category,
               loc: localization,
-              std: startDate,
-              end: endDate,
+              sdate: startDate,
+              edate: endDate,
             }).toString()
         );
         const data = await res.json();

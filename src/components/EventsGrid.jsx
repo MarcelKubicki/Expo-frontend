@@ -6,15 +6,15 @@ function EventsGrid({ events }) {
     <div className={styles.eventsGrid}>
       {events.map((event) => (
         <EventItem
-          key={event.id}
+          key={event.event_name}
           id={event.id}
           thumbnail={event.img_url}
-          title={event.nazwa}
-          localization={event.lokalizacja}
-          desc={event.opis}
-          category={event.kategoria}
-          startDate={event.data_rozpo}
-          endDate={event.data_zakon}
+          title={event.event_name}
+          localization={event.loc_name}
+          desc={event.short_desc}
+          category={event.categ_name}
+          startDate={event.date_start}
+          endDate={event.date_end}
         />
       ))}
     </div>
