@@ -1,12 +1,23 @@
 import styles from "./ExpoPlanSvg.module.css";
-const ACTIVE_COLOR = "#00AB00";
-const UNACTIVE_COLOR = "#ACACAC";
+const ACTIVE_COLOR = "#158207";
+const UNACTIVE_COLOR = "#7ab372";
+const UNOCCUPIED_COLOR = "#ad6753";
 
-function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
+function ExpoPlanSvg({
+  selectedStand,
+  setSelectedStand,
+  scrollToItem,
+  activeStands,
+}) {
   function handleClick(id) {
     const num = Number(id);
     setSelectedStand(num === selectedStand ? null : num);
     scrollToItem(num);
+  }
+
+  function is_occupied(id) {
+    const result = activeStands.filter((e) => e === id).length > 0;
+    return result;
   }
 
   return (
@@ -38,7 +49,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={1}
             width={116}
             height={36}
-            fill={selectedStand === 1 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(1)
+                ? selectedStand === 1
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(1) ? styles.occupied : ""}
           />
 
           <path
@@ -54,7 +72,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={63}
             width={53}
             height={91}
-            fill={selectedStand === 4 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(4)
+                ? selectedStand === 4
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(4) ? styles.occupied : ""}
           />
 
           <path
@@ -70,7 +95,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={63}
             width={63}
             height={63}
-            fill={selectedStand === 5 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(5)
+                ? selectedStand === 5
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(5) ? styles.occupied : ""}
           />
           <path
             id="5_2"
@@ -85,7 +117,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={96}
             width={100}
             height={30}
-            fill={selectedStand === 7 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(7)
+                ? selectedStand === 7
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(7) ? styles.occupied : ""}
           />
           <path
             id="7_2"
@@ -100,7 +139,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={520}
             width={68}
             height={87}
-            fill={selectedStand === 29 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(29)
+                ? selectedStand === 29
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(29) ? styles.occupied : ""}
           />
           <path
             id="29_2"
@@ -115,7 +161,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={579}
             width={43}
             height={28}
-            fill={selectedStand === 28 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(28)
+                ? selectedStand === 28
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(28) ? styles.occupied : ""}
           />
           <path
             id="28_2"
@@ -130,7 +183,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={579}
             width={43}
             height={28}
-            fill={selectedStand === 27 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(27)
+                ? selectedStand === 27
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(27) ? styles.occupied : ""}
           />
           <path
             id="27_2"
@@ -145,7 +205,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={579}
             width={66}
             height={28}
-            fill={selectedStand === 26 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(26)
+                ? selectedStand === 26
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(26) ? styles.occupied : ""}
           />
           <path
             id="26_2"
@@ -160,7 +227,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={438}
             width={68}
             height={59}
-            fill={selectedStand === 25 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(25)
+                ? selectedStand === 25
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(25) ? styles.occupied : ""}
           />
 
           <path
@@ -176,7 +250,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={497}
             width={74}
             height={57}
-            fill={selectedStand === 24 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(24)
+                ? selectedStand === 24
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(24) ? styles.occupied : ""}
           />
           <path
             id="24_2"
@@ -191,7 +272,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={497}
             width={89}
             height={57}
-            fill={selectedStand === 23 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(23)
+                ? selectedStand === 23
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(23) ? styles.occupied : ""}
           />
           <path
             id="23_2"
@@ -206,7 +294,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={467}
             width={66}
             height={87}
-            fill={selectedStand === 22 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(22)
+                ? selectedStand === 22
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(22) ? styles.occupied : ""}
           />
           <path
             id="22_2"
@@ -221,7 +316,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={350}
             width={68}
             height={85}
-            fill={selectedStand === 21 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(21)
+                ? selectedStand === 21
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(21) ? styles.occupied : ""}
           />
           <path
             id="21_2"
@@ -236,7 +338,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={420}
             width={166}
             height={74}
-            fill={selectedStand === 20 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(20)
+                ? selectedStand === 20
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(20) ? styles.occupied : ""}
           />
           <path
             id="20_2"
@@ -251,7 +360,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={420}
             width={66}
             height={43}
-            fill={selectedStand === 19 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(19)
+                ? selectedStand === 19
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(19) ? styles.occupied : ""}
           />
           <path
             id="19_2"
@@ -266,7 +382,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={283}
             width={68}
             height={43}
-            fill={selectedStand === 18 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(18)
+                ? selectedStand === 18
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(18) ? styles.occupied : ""}
           />
           <path
             id="18_2"
@@ -281,7 +404,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={283}
             width={166}
             height={117}
-            fill={selectedStand === 17 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(17)
+                ? selectedStand === 17
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(17) ? styles.occupied : ""}
           />
           <path
             id="17_2"
@@ -296,7 +426,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={298}
             width={66}
             height={87}
-            fill={selectedStand === 16 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(16)
+                ? selectedStand === 16
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(16) ? styles.occupied : ""}
           />
           <path
             id="16_2"
@@ -311,7 +448,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={210}
             width={53}
             height={49}
-            fill={selectedStand === 15 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(15)
+                ? selectedStand === 15
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(15) ? styles.occupied : ""}
           />
 
           <path
@@ -327,7 +471,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={207}
             width={166}
             height={62}
-            fill={selectedStand === 14 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(14)
+                ? selectedStand === 14
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(14) ? styles.occupied : ""}
           />
           <path
             id="14_2"
@@ -342,7 +493,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={210}
             width={53}
             height={49}
-            fill={selectedStand === 13 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(13)
+                ? selectedStand === 13
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(13) ? styles.occupied : ""}
           />
           <path
             id="13_2"
@@ -357,7 +515,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={137}
             width={53}
             height={70}
-            fill={selectedStand === 12 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(12)
+                ? selectedStand === 12
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(12) ? styles.occupied : ""}
           />
           <path
             id="12_2"
@@ -372,7 +537,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={142}
             width={100}
             height={62}
-            fill={selectedStand === 11 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(11)
+                ? selectedStand === 11
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(11) ? styles.occupied : ""}
           />
           <path
             id="11_2"
@@ -387,7 +559,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={142}
             width={63}
             height={62}
-            fill={selectedStand === 10 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(10)
+                ? selectedStand === 10
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(10) ? styles.occupied : ""}
           />
           <path
             id="10_2"
@@ -402,7 +581,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={157}
             width={53}
             height={50}
-            fill={selectedStand === 9 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(9)
+                ? selectedStand === 9
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(9) ? styles.occupied : ""}
           />
           <path
             id="9_2"
@@ -417,7 +603,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={64}
             width={53}
             height={70}
-            fill={selectedStand === 8 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(8)
+                ? selectedStand === 8
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(8) ? styles.occupied : ""}
           />
           <path
             id="8_2"
@@ -432,7 +625,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={63}
             width={100}
             height={30}
-            fill={selectedStand === 6 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(6)
+                ? selectedStand === 6
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(6) ? styles.occupied : ""}
           />
           <path
             id="6_2"
@@ -447,7 +647,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={1}
             width={101}
             height={36}
-            fill={selectedStand === 2 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(2)
+                ? selectedStand === 2
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(2) ? styles.occupied : ""}
           />
           <path
             id="2_2"
@@ -462,7 +669,14 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
             y={1}
             width={106}
             height={36}
-            fill={selectedStand === 3 ? ACTIVE_COLOR : UNACTIVE_COLOR}
+            fill={
+              is_occupied(3)
+                ? selectedStand === 3
+                  ? ACTIVE_COLOR
+                  : UNACTIVE_COLOR
+                : UNOCCUPIED_COLOR
+            }
+            className={is_occupied(3) ? styles.occupied : ""}
           />
           <path
             id="3_2"
@@ -471,6 +685,30 @@ function ExpoPlanSvg({ selectedStand, setSelectedStand, scrollToItem }) {
           />
         </g>
       </svg>
+
+      <h4>Legenda:</h4>
+      <div
+        style={{
+          backgroundColor: UNACTIVE_COLOR,
+          color: "white",
+          textAlign: "center",
+          marginTop: "5px",
+          padding: "3px",
+        }}
+      >
+        Stoisko przydzielone
+      </div>
+      <div
+        style={{
+          backgroundColor: UNOCCUPIED_COLOR,
+          color: "white",
+          textAlign: "center",
+          marginTop: "5px",
+          padding: "3px",
+        }}
+      >
+        Stoisko nieprzydzielone
+      </div>
     </>
   );
 }

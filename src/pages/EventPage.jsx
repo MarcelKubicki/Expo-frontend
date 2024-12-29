@@ -25,6 +25,7 @@ function EventPage() {
   const [event, setEvent] = useState([]);
   const [mapPosition, setMapPosition] = useState([50.8989821, 20.5859409]);
   const [selectedStand, setSelectedStand] = useState(null);
+  const [activeStands, setActiveStands] = useState([]);
   const scrollableContainerRef = useRef(null);
   const itemRefs = useRef([]);
 
@@ -37,6 +38,7 @@ function EventPage() {
         const data = await res.json();
         setEvent(data);
         setMapPosition([data.lat, data.lng]);
+        setActiveStands(data.exhibitors.map((e) => e.stand_num));
       }
       fetchEvent();
     },
@@ -105,6 +107,7 @@ function EventPage() {
               selectedStand={selectedStand}
               setSelectedStand={setSelectedStand}
               scrollToItem={scrollToItem}
+              activeStands={activeStands}
             />
           </div>
           <ExhibitorsList

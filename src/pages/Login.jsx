@@ -32,7 +32,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "/auth",
+        "http://127.0.0.1:8000/api/v1/auth/login",
         JSON.stringify({ username, password }),
         {
           headers: { "Content-Type": "application/json" },
@@ -40,7 +40,7 @@ function Login() {
         }
       );
       console.log(JSON.stringify(res?.data));
-      const accessToken = res?.data?.accessToken;
+      const accessToken = res?.data?.access_token;
       const roles = res?.data?.roles;
       setAuth({ username, password, roles, accessToken });
       console.log(username, password);

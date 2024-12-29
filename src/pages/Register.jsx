@@ -64,7 +64,7 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "/register",
+        "http://127.0.0.1:8000/api/v1/auth/signup",
         JSON.stringify({ username, password }),
         {
           headers: { "Content-Type": "application/json" },
@@ -74,7 +74,9 @@ function Register() {
       console.log(res.data);
       console.log(JSON.stringify(res));
       setSuccess(true);
-      // clear input fields
+      setUsername("");
+      setPassword("");
+      setConfPwd("");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No server response");

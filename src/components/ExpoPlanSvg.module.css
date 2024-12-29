@@ -1,13 +1,13 @@
 .svg {
   background-color: rgb(217, 217, 217);
 }
-.svg rect:hover {
+.svg .occupied:hover {
   stroke: rgb(0, 171, 0);
   stroke-width: 2px;
   cursor: pointer;
 }
 
-.svg rect {
+.svg .occupied {
   transition: fill 0.4s;
 }
 
