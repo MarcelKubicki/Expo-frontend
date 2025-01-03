@@ -1,11 +1,11 @@
-import styles from "./EventPage.module.css";
+import { useEffect, useState, useRef } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
 import ExpoPlanSvg from "../components/ExpoPlanSvg";
 import ExhibitorsList from "../components/ExhibitorsList";
-import { useParams } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEvent } from "../context/EventProvider";
+import styles from "./EventPage.module.css";
 import months from "../../data/months";
 
 function getFormattedDate(startDateStr, endDateStr) {
@@ -25,7 +25,7 @@ function EventPage() {
   const [event, setEvent] = useState([]);
   const [mapPosition, setMapPosition] = useState([50.8989821, 20.5859409]);
   const [selectedStand, setSelectedStand] = useState(null);
-  const [activeStands, setActiveStands] = useState([]);
+  const { activeStands, setActiveStands } = useEvent();
   const scrollableContainerRef = useRef(null);
   const itemRefs = useRef([]);
 
@@ -42,7 +42,7 @@ function EventPage() {
       }
       fetchEvent();
     },
-    [eventId]
+    [eventId, setActiveStands]
   );
 
   const scrollToItem = (index) => {
@@ -54,8 +54,8 @@ function EventPage() {
 
   return (
     <>
+      <Outlet />
       <main className={styles.eventPage}>
-        <PageNav />
         <div className={styles.info}>
           <img className={styles.expoAvatar} src={event.img_url} />
           <div className={styles.content}>
@@ -102,7 +102,8 @@ function EventPage() {
           </div>
         </div>
         <div className={styles.planContainer}>
-          <div style={{ width: 360 }}>
+          <div className={styles.expoMapContainer}>
+            <h2 className={styles.title}>Plan rozmieszczenia stoisk</h2>
             <ExpoPlanSvg
               selectedStand={selectedStand}
               setSelectedStand={setSelectedStand}

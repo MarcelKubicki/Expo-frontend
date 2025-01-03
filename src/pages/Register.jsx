@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import PageNav from "../components/PageNav";
-import styles from "./Register.module.css";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Register.module.css";
 import axios from "../axios";
 
 const REGEX_USERNAME = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -91,7 +90,6 @@ function Register() {
 
   return (
     <>
-      <PageNav />
       <main className={styles.login}>
         <form className={styles.form} onSubmit={handleSubmit}>
           <h2>Rejestracja</h2>

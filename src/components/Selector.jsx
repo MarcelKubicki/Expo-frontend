@@ -1,5 +1,6 @@
 import styles from "./Selector.module.css";
 import { categories } from "../../data/categories";
+import SelectCategory from "./SelectCategory";
 
 function Selector({
   eventName,
@@ -23,20 +24,11 @@ function Selector({
         onChange={(e) => setEventName(e.target.value)}
       />
 
-      <select
+      <SelectCategory
+        category={category}
+        setCategory={setCategory}
         className={styles.select}
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option selected value="">
-          Kategoria
-        </option>
-        {categories.map((c) => (
-          <option key={c.value} value={c.value}>
-            {c.name}
-          </option>
-        ))}
-      </select>
+      />
 
       <select
         className={styles.select}

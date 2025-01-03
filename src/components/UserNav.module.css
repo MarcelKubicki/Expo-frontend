@@ -1,0 +1,42 @@
+.userNavContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.userNavContainer img {
+  width: 17px;
+  height: 17px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.userNavContainer .userNavPopup {
+  position: absolute;
+  bottom: -110px;
+  right: -20px;
+  background-color: white;
+  flex-direction: column;
+  gap: 7px;
+  white-space: nowrap;
+  border-radius: 5px;
+  padding: 5px 8px;
+}
+.userNavContainer .userNavPopup .line {
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+}
+.userNavContainer .userNavPopup .line:hover {
+  color: blueviolet;
+}
+.userNavContainer .userNavPopup .logout {
+  color: red;
+}
+.userNavContainer .userNavPopup .logout:hover {
+  color: red;
+}

@@ -3,14 +3,12 @@ import Banner from "../components/Banner";
 import ExhibitorDetails from "../components/ExhibitorDetails";
 import ExhibitorsFinder from "../components/ExhibitorsFinder";
 import Footer from "../components/Footer";
-import PageNav from "../components/PageNav";
 import styles from "./CatalogPage.module.css";
 
 function CatalogPage() {
   const [selectedExhibitor, setSelectedExhibitor] = useState(null);
   return (
     <>
-      <PageNav />
       <Banner>
         <h1 style={{ color: "white" }}>Katalog wystawców imprez targowych</h1>
         <p style={{ color: "white" }}>

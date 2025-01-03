@@ -1,24 +1,33 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 import styles from "./PageNav.module.css";
+import UserNav from "./UserNav";
 
 function PageNav() {
+  const { auth } = useAuth();
+
   return (
     <nav className={styles.header}>
       <h1 style={{ fontSize: "40px" }}>EXPO</h1>
       <div className={styles.nav}>
+        <NavLink to="/aboutUs" className={styles.navOption}>
+          <p>O nas</p>
+        </NavLink>
         <NavLink to="/" className={styles.navOption}>
           <p>Kalendarium</p>
         </NavLink>
         <NavLink to="/catalog" className={styles.navOption}>
           <p>Katalog wystawców</p>
         </NavLink>
-        {/* <NavLink to="/aboutUs" className={styles.navOption}>
-          <p>O nas</p>
-        </NavLink> */}
+
         <div>
-          <Link to="/login">
-            <button className={styles.loginBtn}>Zaloguj</button>
-          </Link>
+          {auth?.username ? (
+            <UserNav username={auth.username} />
+          ) : (
+            <Link to="/login">
+              <button className={styles.loginBtn}>Zaloguj</button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

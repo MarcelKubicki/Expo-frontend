@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
-import PageNav from "../components/PageNav";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
-import { useEffect, useRef, useState, useContext } from "react";
-import { AuthContext } from "../context/AuthProvider";
+import { useEffect, useRef, useState } from "react";
+import { useAuth } from "../context/AuthProvider";
 import axios from "../axios";
 
 function Login() {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth, setProfileInfo } = useAuth();
   const userRef = useRef(null);
   const errRef = useRef(null);
 
@@ -14,7 +13,10 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
-  const [succes, setSuccess] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(function () {
     userRef.current.focus();
@@ -39,13 +41,26 @@ function Login() {
           withCredentials: true,
         }
       );
+
+      const resProfile = await axios.get(
+        `/exhibitors/user_profile/${res?.data?.user?.id}`
+      );
+      setProfileInfo(resProfile?.data);
+
       console.log(JSON.stringify(res?.data));
+      console.log(JSON.stringify(resProfile?.data));
+
+      const userId = res?.data?.user?.id;
       const accessToken = res?.data?.access_token;
-      const roles = res?.data?.roles;
-      setAuth({ username, password, roles, accessToken });
+      const refreshToken = res?.data?.refresh_token;
+      const roles = res?.data?.user?.roles;
+      setAuth({ userId, username, password, roles, accessToken, refreshToken });
+
       console.log(username, password);
       setUsername("");
       setPassword("");
+
+      navigate(from, { replace: true });
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No server response");
@@ -61,49 +76,46 @@ function Login() {
   }
 
   return (
-    <>
-      <PageNav />
-      <main className={styles.login}>
-        <form className={styles.form} onSubmit={handleSubmint}>
-          <h2>Logowanie</h2>
+    <main className={styles.login}>
+      <form className={styles.form} onSubmit={handleSubmint}>
+        <h2>Logowanie</h2>
 
-          <p className={errMsg ? styles.errMsg : styles.invisible} ref={errRef}>
-            {errMsg}
-          </p>
+        <p className={errMsg ? styles.errMsg : styles.invisible} ref={errRef}>
+          {errMsg}
+        </p>
 
-          <div className={styles.row}>
-            <label htmlFor="username">Nazwa uzytkownika:</label>
-            <input
-              id="username"
-              type="text"
-              required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              ref={userRef}
-              autoComplete="off"
-            />
-          </div>
+        <div className={styles.row}>
+          <label htmlFor="username">Nazwa uzytkownika:</label>
+          <input
+            id="username"
+            type="text"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            ref={userRef}
+            autoComplete="off"
+          />
+        </div>
 
-          <div className={styles.row}>
-            <label htmlFor="password">Hasło:</label>
-            <input
-              id="password"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+        <div className={styles.row}>
+          <label htmlFor="password">Hasło:</label>
+          <input
+            id="password"
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-          <button>Zaloguj się</button>
+        <button>Zaloguj się</button>
 
-          <p className={styles.question}>Nie posiadasz jeszcze konta?</p>
-          <Link to="/register">
-            <p className={styles.question}>Zarejestruj sie</p>
-          </Link>
-        </form>
-      </main>
-    </>
+        <p className={styles.question}>Nie posiadasz jeszcze konta?</p>
+        <Link to="/register">
+          <p className={styles.question}>Zarejestruj sie</p>
+        </Link>
+      </form>
+    </main>
   );
 }
 

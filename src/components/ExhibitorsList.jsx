@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ExhibitorPrev from "./ExhibitorPrev";
 import styles from "./ExhibitorsList.module.css";
 
@@ -22,127 +23,10 @@ function ExhibitorsList({
             scrollableContainerRef={scrollableContainerRef}
           />
         ))}
-        {/* <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 3,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 4,
-            img_url: "/hyperx.jpg",
-            exhib_name: "HyperX",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 5,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 6,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 7,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 8,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 9,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        />
-        <ExhibitorPrev
-          exhibitorData={{
-            stand_num: 10,
-            img_url: "/razer_logo.jpg",
-            exhib_name: "Razer",
-            adres: "Kielce ul. Jana Pawła 4",
-            mail: "razer@razer.pl",
-            site: "razer.pl",
-            description: "elo",
-          }}
-          selectedStand={selectedStand}
-          setSelectedStand={setSelectedStand}
-          itemRefs={itemRefs}
-          scrollableContainerRef={scrollableContainerRef}
-        /> */}
       </div>
+      <Link to="join" className={styles.joinBtn}>
+        WEŹ UDZIAŁ
+      </Link>
     </div>
   );
 }

@@ -1,29 +1,29 @@
 import styles from "./ExpoPlanSvg.module.css";
-const ACTIVE_COLOR = "#158207";
-const UNACTIVE_COLOR = "#7ab372";
-const UNOCCUPIED_COLOR = "#ad6753";
 
 function ExpoPlanSvg({
   selectedStand,
   setSelectedStand,
   scrollToItem,
   activeStands,
+  chooseMode,
 }) {
+  const ACTIVE_COLOR = "#158207";
+  const UNACTIVE_COLOR = chooseMode ? "#545454" : "#7ab372";
+  const UNOCCUPIED_COLOR = chooseMode ? "#b8b8b8" : "#ad6753";
+
   function handleClick(id) {
     const num = Number(id);
     setSelectedStand(num === selectedStand ? null : num);
-    scrollToItem(num);
+    if (scrollToItem) scrollToItem(num);
   }
 
   function is_occupied(id) {
     const result = activeStands.filter((e) => e === id).length > 0;
-    return result;
+    return chooseMode ? !result : result;
   }
 
   return (
     <>
-      <h2 className={styles.title}>Plan rozmieszczenia stoisk</h2>
-
       <svg
         viewBox="0 0 359 608"
         fill="none"
@@ -688,26 +688,16 @@ function ExpoPlanSvg({
 
       <h4>Legenda:</h4>
       <div
-        style={{
-          backgroundColor: UNACTIVE_COLOR,
-          color: "white",
-          textAlign: "center",
-          marginTop: "5px",
-          padding: "3px",
-        }}
+        style={{ backgroundColor: UNACTIVE_COLOR }}
+        className={styles.legendItem}
       >
-        Stoisko przydzielone
+        {chooseMode ? "Stoisko dostępne" : "Stoisko przydzielone"}
       </div>
       <div
-        style={{
-          backgroundColor: UNOCCUPIED_COLOR,
-          color: "white",
-          textAlign: "center",
-          marginTop: "5px",
-          padding: "3px",
-        }}
+        style={{ backgroundColor: UNOCCUPIED_COLOR }}
+        className={styles.legendItem}
       >
-        Stoisko nieprzydzielone
+        {chooseMode ? "Stoisko niedostępne" : "Stoisko nieprzydzielone"}
       </div>
     </>
   );

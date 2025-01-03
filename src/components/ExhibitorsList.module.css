@@ -15,3 +15,22 @@
   border: 5px solid black;
   margin-bottom: 15px;
 }
+.listContainer .joinBtn {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 19px;
+  font-weight: 700;
+  padding: 17px 0;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  text-decoration: none;
+  text-align: center;
+}
+.listContainer .joinBtn:hover {
+  box-shadow: 1px 1px 5px black;
+}
+.listContainer .joinBtn:active {
+  background-color: rgba(0, 0, 0, 0.75);
+}
