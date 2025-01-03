@@ -1,6 +1,7 @@
 import styles from "./Selector.module.css";
 import { categories } from "../../data/categories";
 import SelectCategory from "./SelectCategory";
+import SelectLocalization from "./SelectLocalization";
 
 function Selector({
   eventName,
@@ -30,17 +31,11 @@ function Selector({
         className={styles.select}
       />
 
-      <select
+      <SelectLocalization
+        localization={localization}
+        setLocalization={setLocalization}
         className={styles.select}
-        value={localization}
-        onChange={(e) => setLocalization(e.target.value)}
-      >
-        <option selected value="">
-          Lokalizacja
-        </option>
-        <option value="Kielce">Kielce</option>
-        <option value="Warszawa">Warszawa</option>
-      </select>
+      />
 
       <input
         type="date"

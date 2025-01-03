@@ -1,23 +1,11 @@
 import { useState } from "react";
 import styles from "./UserNav.module.css";
 import { Link } from "react-router-dom";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useAuth } from "../context/AuthProvider";
 
 function UserNav({ username }) {
   const [extended, setExtended] = useState(false);
-  const { setAuth } = useAuth();
-  const axiosPrivate = useAxiosPrivate();
-
-  async function handleLogout() {
-    try {
-      const res = await axiosPrivate.get("/auth/logout");
-      console.log(res.data);
-      setAuth({});
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const { handleLogout } = useAuth();
 
   return (
     <div

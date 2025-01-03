@@ -60,7 +60,11 @@ function Login() {
       setUsername("");
       setPassword("");
 
-      navigate(from, { replace: true });
+      if (roles.includes("admin")) {
+        navigate("/adminPanel");
+      } else {
+        navigate(from, { replace: true });
+      }
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No server response");

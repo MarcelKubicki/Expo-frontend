@@ -5,6 +5,7 @@ function SelectCategory({
   setCategory,
   disabled = false,
   className,
+  required = false,
 }) {
   return (
     <select
@@ -12,6 +13,7 @@ function SelectCategory({
       value={category}
       onChange={(e) => setCategory(e.target.value)}
       disabled={disabled}
+      required={required}
     >
       <option selected value="">
         Kategoria

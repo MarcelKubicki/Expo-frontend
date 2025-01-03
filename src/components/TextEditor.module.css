@@ -1,0 +1,15 @@
+.area {
+  border: 1px solid black;
+  min-height: 100px;
+}
+.controlGroup .buttonGroup button {
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  margin: 2px;
+  cursor: pointer;
+}
+.controlGroup .buttonGroup {
+  background-color: gray;
+  padding: 5px 5px 0 5px;
+}
