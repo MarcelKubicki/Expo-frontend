@@ -31,7 +31,8 @@
   margin-bottom: 5px;
 }
 .row input,
-.row textarea {
+.row textarea,
+.row select {
   font-size: 16px;
   padding: 7px 10px;
   border: none;

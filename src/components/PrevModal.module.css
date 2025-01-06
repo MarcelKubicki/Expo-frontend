@@ -1,0 +1,63 @@
+.prevModal {
+  flex: 1;
+  padding: 20px 20px;
+}
+
+.prevModal .info img {
+  width: 50%;
+  margin-bottom: 10px;
+  border: 2px solid black;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.description {
+  text-align: justify;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 20px;
+  padding: 10px 15px;
+}
+
+.buttonsContainer button {
+  flex: 1;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.decisionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 15px;
+}
+
+.decisionContainer button,
+.decisionContainer input {
+  padding: 5px 10px;
+}
+
+.decisionContainer button {
+  cursor: pointer;
+}
+
+.buttonsContainer button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(176, 176, 176);
+}
+
+.prevModal .buttonsContainer .accept {
+  background-color: rgb(80, 160, 80);
+}
+
+.prevModal .buttonsContainer .decline {
+  background-color: rgb(201, 40, 40);
+}

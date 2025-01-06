@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
+import SelectCategory from "../components/SelectCategory";
 import styles from "./ProfilePage.module.css";
 import axios from "../axios";
 
@@ -10,6 +11,7 @@ function ProfilePage() {
   const [adres, setAdres] = useState(profileInfo.adres);
   const [mail, setMail] = useState(profileInfo.mail);
   const [site, setSite] = useState(profileInfo.site_url);
+  const [category, setCategory] = useState(profileInfo.category);
   const [description, setDescription] = useState(profileInfo.description);
 
   const [isEditing, setIsEditing] = useState("");
@@ -61,6 +63,7 @@ function ProfilePage() {
           adres,
           mail,
           site_url: site,
+          category,
           description,
           user_id: auth.userId,
         }),
@@ -125,6 +128,16 @@ function ProfilePage() {
               id="site_url"
               value={site}
               onChange={(e) => setSite(e.target.value)}
+              disabled={!isEditing}
+            />
+          </div>
+
+          <div className={styles.row}>
+            <label htmlFor="category">Kategoria:</label>
+            <SelectCategory
+              id="category"
+              category={category}
+              setCategory={setCategory}
               disabled={!isEditing}
             />
           </div>

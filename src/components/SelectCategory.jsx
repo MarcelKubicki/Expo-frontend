@@ -6,9 +6,11 @@ function SelectCategory({
   disabled = false,
   className,
   required = false,
+  id = "select",
 }) {
   return (
     <select
+      id={id}
       className={className}
       value={category}
       onChange={(e) => setCategory(e.target.value)}

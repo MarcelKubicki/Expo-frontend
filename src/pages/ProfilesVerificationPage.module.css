@@ -1,0 +1,26 @@
+.catalogPage {
+  display: flex;
+  flex-direction: column;
+  padding-left: 750px;
+  padding-right: 50px;
+}
+
+.listContainer {
+  width: 400px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 280px;
+  text-align: center;
+}
+
+.listContainer .exhibList {
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgb(231, 231, 231);
+}
+
+.listContainer h3 {
+  padding: 10px 15px;
+}

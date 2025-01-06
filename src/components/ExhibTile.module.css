@@ -1,0 +1,44 @@
+.prevContainer {
+  background-color: rgb(109, 109, 109);
+  color: white;
+  padding: 13px 15px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 7px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+.prevContainer:hover,
+.activePrevContainer {
+  background-color: black;
+}
+
+.prevContainer img {
+  width: 85px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: white;
+}
+.category {
+  font-size: 14px;
+  position: absolute;
+  right: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+.name {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.description {
+  font-size: 13px;
+}
+.info {
+  text-align: start;
+}

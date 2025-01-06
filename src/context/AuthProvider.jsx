@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import axios from "../axios";
 
 const AuthContext = createContext({});
 
@@ -10,7 +11,9 @@ function AuthProvider({ children }) {
 
   async function handleLogout() {
     try {
-      const res = await axiosPrivate.get("/auth/logout");
+      const res = await axios.get("/auth/logout", {
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
+      });
       console.log(res.data);
       setAuth({});
     } catch (err) {

@@ -21,16 +21,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<RequireAuth allowedRoles={["admin"]} />}>
-          <Route path="/adminPanel" element={<AdminPage />}>
-            <Route path="createEvent" element={<CreateEventPage />} />
-            <Route
-              path="profilesVerification"
-              element={<ProfilesVerificationPage />}
-            />
-            <Route path="joinRequests" element={<JoinRequestsPage />} />
-          </Route>
+        {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
+        <Route path="/adminPanel" element={<AdminPage />}>
+          <Route path="createEvent" element={<CreateEventPage />} />
+          <Route
+            path="profilesVerification"
+            element={<ProfilesVerificationPage />}
+          />
+          <Route path="joinRequests" element={<JoinRequestsPage />} />
         </Route>
+        {/* </Route> */}
 
         <Route element={<UserLayout />}>
           <Route element={<EventProviderLayout />}>
