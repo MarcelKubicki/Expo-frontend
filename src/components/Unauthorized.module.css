@@ -1,0 +1,38 @@
+.unauthorized {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.unauthorized img {
+  height: 500px;
+}
+
+.unauthorized .title {
+  font-size: 160px;
+  font-weight: 700;
+  color: rgb(160, 31, 31);
+}
+
+.unauthorized .description {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.unauthorized button {
+  padding: 15px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: rgb(46, 46, 46);
+  color: white;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.unauthorized button:hover {
+  opacity: 0.9;
+}

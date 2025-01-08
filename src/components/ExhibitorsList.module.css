@@ -8,6 +8,9 @@
   overflow-x: hidden;
   overflow-y: auto;
   background-color: rgb(231, 231, 231);
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 2px solid black;
 }
 .listContainer h2 {
   text-align: center;
@@ -17,20 +20,31 @@
 }
 .listContainer .joinBtn {
   border: none;
-  background-color: black;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #39484e;
   color: white;
   font-size: 19px;
   font-weight: 700;
   padding: 17px 0;
-  margin-top: 25px;
+
   cursor: pointer;
-  transition: transform 0.3s;
   text-decoration: none;
   text-align: center;
+  transition: opacity 0.3s;
 }
 .listContainer .joinBtn:hover {
-  box-shadow: 1px 1px 5px black;
+  opacity: 0.9;
 }
-.listContainer .joinBtn:active {
-  background-color: rgba(0, 0, 0, 0.75);
+.listContainer .joinBtn:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+  font-weight: 600;
+}
+.searchInput {
+  padding: 10px 15px;
+  border: none;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-bottom: 10px;
 }

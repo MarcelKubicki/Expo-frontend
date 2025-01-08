@@ -2,27 +2,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 }
+
 .modal {
   height: 100%;
   background-color: rgb(221, 221, 221);
   border-radius: 10px;
   position: relative;
-  text-align: justify;
   padding: 15px 25px;
   width: 650px;
   margin-top: 25px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-.modal img {
-  width: 220px;
-}
-.basicInfoContainer {
-  /* display: flex;
-  gap: 20px; */
-  /* background-color: white; */
 
-  padding: 10px 0;
+.mainContainer .modal h1 {
+  margin-bottom: 15px;
+}
+
+.modal img {
+  height: 100px;
 }
 
 .row {
@@ -30,11 +29,19 @@
   flex-direction: column;
   margin-bottom: 5px;
 }
+
+.profilePictureRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
 .row input,
 .row textarea,
 .row select {
   font-size: 16px;
-  padding: 7px 10px;
+  font-family: Arial;
+  padding: 8px 12px;
   border: none;
   border-radius: 10px;
 }
@@ -83,4 +90,7 @@
   width: 40px;
   height: 40px;
   margin-right: 10px;
+}
+.selectCategory:disabled {
+  background-color: rgba(239, 239, 239, 0.3);
 }

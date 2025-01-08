@@ -1,17 +1,18 @@
+import styles from "./ProfilePage.module.css";
+import SelectCategory from "../components/SelectCategory";
 import { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
-import SelectCategory from "../components/SelectCategory";
-import styles from "./ProfilePage.module.css";
 import axios from "../axios";
 
 function ProfilePage() {
   const { auth, profileInfo, setProfileInfo } = useAuth();
 
   const [name, setName] = useState(profileInfo.exhib_name);
+  const [short_desc, setShortDesc] = useState(profileInfo.short_desc);
   const [adres, setAdres] = useState(profileInfo.adres);
   const [mail, setMail] = useState(profileInfo.mail);
   const [site, setSite] = useState(profileInfo.site_url);
-  const [category, setCategory] = useState(profileInfo.category);
+  const [category, setCategory] = useState(profileInfo.short_categ_name);
   const [description, setDescription] = useState(profileInfo.description);
 
   const [isEditing, setIsEditing] = useState("");
@@ -59,6 +60,7 @@ function ProfilePage() {
         "exhibitors/",
         JSON.stringify({
           exhib_name: name,
+          short_desc,
           img_url: filename || profileInfo.img_url,
           adres,
           mail,
@@ -81,14 +83,14 @@ function ProfilePage() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.modal}>
+        <h1>Twój profil</h1>
         <form className={styles.basicInfoContainer} onSubmit={handleSubmit}>
-          <div className={styles.row}>
-            <label htmlFor="image">Zdjecie profilowe:</label>
+          <div className={styles.profilePictureRow}>
             <img src={profileInfo.img_url} />
-            {isEditing && (
-              <input id="image" type="file" onChange={handleFileChange} />
-            )}
           </div>
+          {isEditing && (
+            <input id="image" type="file" onChange={handleFileChange} />
+          )}
           <div className={styles.row}>
             <label htmlFor="exhib_name">Nazwa wystawcy:</label>
             <input
@@ -96,6 +98,16 @@ function ProfilePage() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              disabled={!isEditing}
+            />
+          </div>
+
+          <div className={styles.row}>
+            <label htmlFor="short_desc">Krótki opis:</label>
+            <input
+              id="short_desc"
+              value={short_desc}
+              onChange={(e) => setShortDesc(e.target.value)}
               disabled={!isEditing}
             />
           </div>
@@ -126,6 +138,7 @@ function ProfilePage() {
             <label htmlFor="site_url">Strona www:</label>
             <input
               id="site_url"
+              type="url"
               value={site}
               onChange={(e) => setSite(e.target.value)}
               disabled={!isEditing}
@@ -139,6 +152,7 @@ function ProfilePage() {
               category={category}
               setCategory={setCategory}
               disabled={!isEditing}
+              className={styles.selectCategory}
             />
           </div>
 

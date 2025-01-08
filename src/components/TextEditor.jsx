@@ -1,31 +1,7 @@
-import Document from "@tiptap/extension-document";
-import Heading from "@tiptap/extension-heading";
-import Paragraph from "@tiptap/extension-paragraph";
-import Bold from "@tiptap/extension-bold";
-import Underline from "@tiptap/extension-underline";
-import Text from "@tiptap/extension-text";
-import { EditorContent, useEditor } from "@tiptap/react";
 import styles from "./TextEditor.module.css";
+import { EditorContent } from "@tiptap/react";
 
-export default function TextEditor({ longDesc, setLongDesc }) {
-  const editor = useEditor({
-    extensions: [
-      Document,
-      Paragraph,
-      Text,
-      Bold,
-      Underline,
-      Heading.configure({
-        levels: [2, 3],
-      }),
-    ],
-    content: longDesc,
-    onUpdate: ({ editor }) => {
-      const contentHTML = editor.getHTML();
-      setLongDesc(contentHTML);
-    },
-  });
-
+export default function TextEditor({ editor }) {
   if (!editor) {
     return null;
   }

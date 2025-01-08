@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./EventRequestModal.module.css";
 import ExpoPlanSvgAdmin from "./ExpoPlanSvgAdmin";
 import PrevModal from "./PrevModal";
@@ -6,6 +6,7 @@ import PrevModal from "./PrevModal";
 function EventRequestModal({ exhibitors }) {
   const [selectedStand, setSelectedStand] = useState(null);
   const [exhibs, setExhibitors] = useState(exhibitors);
+  useEffect(() => setExhibitors(exhibitors), [exhibitors]);
   return (
     <main className={styles.eventRequestMain}>
       <div style={{ width: "330px" }}>

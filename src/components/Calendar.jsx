@@ -1,5 +1,5 @@
-import Selector from "./Selector";
 import styles from "./Calendar.module.css";
+import Selector from "./Selector";
 import EventsGrid from "./EventsGrid";
 import { useEffect, useState } from "react";
 

@@ -1,0 +1,48 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.modal {
+  height: 100%;
+  background-color: rgb(221, 221, 221);
+  border-radius: 10px;
+  position: relative;
+  text-align: justify;
+  padding: 15px 25px;
+  width: 650px;
+  margin-top: 25px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.39);
+  min-height: 450px;
+}
+
+.mainContainer .modal .listContainer {
+  list-style: none;
+}
+
+.mainContainer .modal .listContainer li {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 5px;
+  border-left: 5px solid black;
+}
+
+.mainContainer .modal .listContainer li img {
+  width: 25px;
+  height: 25px;
+}
+
+.notificationTitle {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.mainContainer .modal h1 {
+  margin-bottom: 12px;
+}

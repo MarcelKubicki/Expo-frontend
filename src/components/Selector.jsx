@@ -1,5 +1,4 @@
 import styles from "./Selector.module.css";
-import { categories } from "../../data/categories";
 import SelectCategory from "./SelectCategory";
 import SelectLocalization from "./SelectLocalization";
 
@@ -19,7 +18,7 @@ function Selector({
     <div className={styles.selector}>
       <input
         className={styles.searchbar}
-        type="text"
+        type="search"
         placeholder="Wpisz nazwe wydarzenia..."
         value={eventName}
         onChange={(e) => setEventName(e.target.value)}

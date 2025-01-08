@@ -8,6 +8,9 @@ function AdminNav() {
   return (
     <nav className={styles.adminNav}>
       <div className={styles.subpagesContainer}>
+        <h1 className={styles.logo}>
+          EXPO<span>adminPanel</span>
+        </h1>
         <NavLink to="createEvent">Utwórz wydarzenie</NavLink>
         <NavLink to="profilesVerification">
           Weryfikacja profili wystawców

@@ -1,29 +1,52 @@
-import { useEffect, useState } from "react";
-import TextEditor from "../components/TextEditor";
 import styles from "./CreateEventPage.module.css";
+import TextEditor from "../components/TextEditor";
 import SelectLocalization from "../components/SelectLocalization";
 import SelectCategory from "../components/SelectCategory";
+import Document from "@tiptap/extension-document";
+import Heading from "@tiptap/extension-heading";
+import Paragraph from "@tiptap/extension-paragraph";
+import Bold from "@tiptap/extension-bold";
+import Underline from "@tiptap/extension-underline";
+import Text from "@tiptap/extension-text";
+import { useEffect, useState } from "react";
+import { useEditor } from "@tiptap/react";
 import axios from "../axios";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 function CreateEventPage() {
-  const [eventName, setEventName] = useState("");
-  const [shortDesc, setShortDesc] = useState("");
-  const [longDesc, setLongDesc] = useState("Wprowadź opis wydarzenia...");
+  const editor = useEditor({
+    extensions: [
+      Document,
+      Paragraph,
+      Text,
+      Bold,
+      Underline,
+      Heading.configure({
+        levels: [2, 3],
+      }),
+    ],
+    onUpdate: ({ editor }) => {
+      const contentHTML = editor.getHTML();
+      setLongDesc(contentHTML);
+    },
+  });
+
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState();
+
+  const [photos, setPhotos] = useState(null);
+  const [photosPreview, setPhotosPreview] = useState();
+
+  const [eventName, setEventName] = useState("");
+  const [shortDesc, setShortDesc] = useState("");
+  const [longDesc, setLongDesc] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [localization, setLocalization] = useState("");
   const [category, setCategory] = useState("");
+
   const axiosPrivate = useAxiosPrivate();
 
-  function handleFileChange(e) {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-      console.log(e.target.files[0]);
-    }
-  }
   useEffect(
     function () {
       if (!file) {
@@ -39,9 +62,58 @@ function CreateEventPage() {
     [file]
   );
 
-  async function handleSubmit() {
-    let filename;
+  useEffect(
+    function () {
+      if (!photos) {
+        setPhotosPreview(undefined);
+        return;
+      }
 
+      const objectsUrls = photos.map((photo) => URL.createObjectURL(photo));
+      setPhotosPreview(objectsUrls);
+
+      return () => objectsUrls.forEach((object) => URL.revokeObjectURL(object));
+    },
+    [photos]
+  );
+
+  function handleFileChange(e) {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    } else {
+      setFile(null);
+    }
+  }
+
+  function handlePhotosChange(e) {
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files).slice(0, 3);
+      setPhotos(filesArray);
+    } else {
+      setPhotos(null);
+    }
+  }
+
+  async function handlePhotosUploas() {
+    if (photos) {
+      const formData = new FormData();
+      photos.forEach((photo) => formData.append("files", photo));
+
+      try {
+        const response = await axios.post(
+          "/exhibitors/upload_photos",
+          formData
+        );
+        console.log(response.data);
+        return response?.data?.filenames;
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+    }
+  }
+
+  async function handleProfileImgUpload() {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
@@ -51,15 +123,36 @@ function CreateEventPage() {
           "/exhibitors/upload_profile_img",
           formData
         );
-        filename = resImg.data.filename;
+        return resImg.data.filename;
       } catch (error) {
         console.log(error);
+        return null;
       }
     }
+  }
+
+  function resetAllStates() {
+    setEventName("");
+    setShortDesc("");
+    setStartDate("");
+    setEndDate("");
+    setLocalization("");
+    setCategory("");
+    setFile(null);
+    setPreview(null);
+    setPhotos(null);
+    setPhotosPreview(null);
+    editor.commands.clearContent();
+  }
+
+  async function handleSubmit() {
+    const img_url = await handleProfileImgUpload();
+    const photos_urls = await handlePhotosUploas();
 
     const payload = {
       event_name: eventName,
-      img_url: filename,
+      img_url,
+      photos_urls,
       date_start: startDate,
       date_end: endDate,
       short_desc: shortDesc,
@@ -75,14 +168,7 @@ function CreateEventPage() {
     } catch (error) {
       console.log(error);
     } finally {
-      setEventName("");
-      setShortDesc("");
-      setStartDate("");
-      setEndDate("");
-      setLocalization("");
-      setCategory("");
-      setFile(null);
-      setLongDesc("");
+      resetAllStates();
     }
   }
 
@@ -106,6 +192,7 @@ function CreateEventPage() {
             <input
               id="image"
               type="file"
+              accept="image/png, image/jpeg, image/jpg"
               onChange={handleFileChange}
               required
             />
@@ -171,11 +258,37 @@ function CreateEventPage() {
                 />
               </div>
             </div>
+            <div className={styles.photosContainer}>
+              {photos
+                ? photosPreview?.map((e, i) => (
+                    <img key={i} src={e} className={styles.photo} />
+                  ))
+                : Array(3)
+                    .fill()
+                    .map((_, i) => (
+                      <div key={i} className={styles.photo_holder}>
+                        <img
+                          className={styles.img_icon}
+                          src="/image-gallery.png"
+                          alt="photo icon"
+                        />
+                      </div>
+                    ))}
+            </div>
+            <input
+              id="photos"
+              type="file"
+              accept="image/png, image/jpeg, image/jpg"
+              multiple
+              onChange={handlePhotosChange}
+              required
+            />
+            <button onClick={resetAllStates}>reset</button>
           </div>
         </div>
       </form>
       <label>Opis</label>
-      <TextEditor longDesc={longDesc} setLongDesc={setLongDesc} />
+      <TextEditor editor={editor} />
       <button className={styles.createBtn} onClick={handleSubmit}>
         Utwórz wydarzenie
       </button>

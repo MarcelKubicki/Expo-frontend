@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import styles from "./ExhibitorPrev.module.css";
+import { useEffect } from "react";
 
 function ExhibitorPrev({
   exhibitorData,
@@ -12,7 +12,6 @@ function ExhibitorPrev({
     stand_num: id,
     img_url,
     exhib_name: name,
-    tel,
     adres,
     mail,
     site_url: site,
@@ -55,10 +54,10 @@ function ExhibitorPrev({
         ) : (
           <div className={styles.img_alt}></div>
         )}
-        <p>{name}</p>
+        <p className={styles.exhibitorName}>{name}</p>
         <div className={styles.arrow}>
           <img
-            src="/next.png"
+            src="/right-arrow.png"
             alt="next"
             style={selectedStand === id ? { transform: "rotate(90deg)" } : {}}
           />
@@ -69,7 +68,7 @@ function ExhibitorPrev({
           <div className={styles.basicInfoContainer}>
             <img src={img_url} />
             <div className={styles.rowsContatiner}>
-              <p>
+              <p className={styles.exhibitorName}>
                 <b>{name}</b>
               </p>
               <div className={styles.row}>
@@ -82,12 +81,13 @@ function ExhibitorPrev({
               </div>
               <div className={styles.row}>
                 <img src="/domain.png" />
-                <a href={site}>{site}</a>
+                <a href={site} target="_blank" rel="noopener noreferrer">
+                  {site}
+                </a>
               </div>
             </div>
           </div>
 
-          <p className={styles.descTag}>Opis</p>
           <div dangerouslySetInnerHTML={{ __html: `${description}` }}></div>
         </div>
       )}

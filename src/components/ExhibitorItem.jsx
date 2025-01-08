@@ -1,7 +1,7 @@
 import styles from "./ExhibitorItem.module.css";
 
 function ExhibitorItem({ exhibitor, selectedExhibitor, setSelectedExhibitor }) {
-  const { id, img_url, exhib_name, categ_name } = exhibitor;
+  const { id, img_url, exhib_name, categ_name, short_desc } = exhibitor;
   return (
     <li
       className={`${styles.prevContainer} ${
@@ -13,9 +13,7 @@ function ExhibitorItem({ exhibitor, selectedExhibitor, setSelectedExhibitor }) {
 
       <div>
         <p className={styles.name}>{exhib_name}</p>
-        <p className={styles.description}>
-          <p>Tworzenie rozwiązań i systemów informatycznych</p>
-        </p>
+        <p className={styles.description}>{short_desc}</p>
       </div>
       <div className={styles.category}>{categ_name}</div>
     </li>

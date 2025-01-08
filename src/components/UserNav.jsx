@@ -22,7 +22,9 @@ function UserNav({ username }) {
           <Link className={styles.line} to="/profile">
             Podgląd profilu
           </Link>
-          <Link className={styles.line}>Powiadomienia</Link>
+          <Link to="/notifications" className={styles.line}>
+            Powiadomienia
+          </Link>
           <div
             className={`${styles.line} ${styles.logout}`}
             onClick={handleLogout}

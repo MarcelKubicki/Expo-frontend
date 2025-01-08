@@ -53,3 +53,25 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.photosContainer {
+  display: flex;
+  gap: 25px;
+  margin-top: 15px;
+}
+.photo_holder {
+  width: 220px;
+  height: 120px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(229, 229, 229);
+}
+.photo_holder .img_icon {
+  width: 100px;
+}
+.photo {
+  width: 220px;
+}

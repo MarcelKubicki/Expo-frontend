@@ -75,7 +75,7 @@
 .eventPage .planContainer .expoMapContainer {
   width: 360px;
 }
-.eventPage .planContainer .expoMapContainer .title {
+.eventPage .planContainer .expoMapContainer .titleMap {
   text-align: center;
   padding: 15px 5px;
   border: 5px solid black;
@@ -99,5 +99,5 @@
   margin: 30px 0;
 }
 .galery img {
-  height: 270px;
+  width: 400px;
 }

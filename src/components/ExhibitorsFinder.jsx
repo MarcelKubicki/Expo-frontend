@@ -1,6 +1,6 @@
 import styles from "./ExhibitorsFinder.module.css";
-import { categories } from "../../data/categories";
 import ExhibitorItem from "./ExhibitorItem";
+import { categories } from "../../data/categories";
 import { useEffect, useState } from "react";
 
 function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
@@ -32,7 +32,7 @@ function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
       <div className={styles.searchRow}>
         <input
           className={styles.finderBar}
-          type="text"
+          type="search"
           placeholder="Wpisz nazwę wystawcy..."
           value={exhibName}
           onChange={(e) => setExhibName(e.target.value)}

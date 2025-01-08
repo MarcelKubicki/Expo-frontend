@@ -8,7 +8,9 @@ function PageNav() {
 
   return (
     <nav className={styles.header}>
-      <h1 style={{ fontSize: "40px" }}>EXPO</h1>
+      <Link to="/aboutUs" style={{ textDecoration: "none", color: "black" }}>
+        <h1 style={{ fontSize: "40px" }}>EXPO</h1>
+      </Link>
       <div className={styles.nav}>
         <NavLink to="/aboutUs" className={styles.navOption}>
           <p>O nas</p>

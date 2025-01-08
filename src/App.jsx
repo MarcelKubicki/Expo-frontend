@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
@@ -16,13 +16,17 @@ import UserLayout from "./pages/UserLayout";
 import CreateEventPage from "./pages/CreateEventPage";
 import ProfilesVerificationPage from "./pages/ProfilesVerificationPage";
 import JoinRequestsPage from "./pages/JoinRequestsPage";
+import ScrollToTop from "./components/ScrollToTop";
+import NotificationsPage from "./pages/NotificationsPage";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
         <Route path="/adminPanel" element={<AdminPage />}>
+          <Route index element={<Navigate to="createEvent" />} />
           <Route path="createEvent" element={<CreateEventPage />} />
           <Route
             path="profilesVerification"
@@ -46,6 +50,7 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route element={<RequireAuth allowedRoles={["user"]} />}>
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
           </Route>
 
           <Route path="/login" element={<Login />} />

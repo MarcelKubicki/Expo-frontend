@@ -1,17 +1,113 @@
+import styles from "./AboutUs.module.css";
 import Banner from "../components/Banner";
-import useRefreshToken from "../hooks/useRefreshToken";
+import Footer from "../components/Footer";
+import MapPolandSvg from "../components/MapPolandSvg";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "../axios";
 
 function AboutUs() {
-  const refresh = useRefreshToken();
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+
+  useEffect(function () {
+    async function fetch_upcoming() {
+      try {
+        const response = await axios.get("/events/upcoming_four");
+        setUpcomingEvents(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetch_upcoming();
+  }, []);
   return (
-    <main>
+    <>
       <Banner>
-        <h1 style={{ color: "white" }}>Expo</h1>
-        <p style={{ color: "white" }}>Jesteśmy tacy o!</p>
+        <h1 style={{ color: "white", fontSize: "90px" }}>EXPO </h1>
+        <p style={{ color: "white", fontWeight: "700", fontSize: "20px" }}>
+          Katalog imprez oraz wystawców targowych
+        </p>
       </Banner>
-      <h2>Wszystko jest dobrze, chłopaki dobrze robią</h2>
-      <button onClick={() => refresh()}>refresh</button>
-    </main>
+      <main className={styles.aboutUs}>
+        <div className={styles.rowInfoContainer}>
+          <div className={styles.rowInfoLeft}>
+            <MapPolandSvg />
+          </div>
+          <div className={styles.rowInfoRight}>
+            <h3>Śledzimy największe obiekty targowe w Polsce</h3>
+            <p className={styles.rowInfoRightDesc}>
+              Oferujemy wgląd do kalendarza imprez targowych odbywających się w
+              czołowych obiektach na terenie całej polski. Dzięki nam będziesz
+              zawsze doinformowany na czas o bierzących wydarzeniach oraz
+              unikniesz mozolnego procesu wertowania stron organizatorów w celu
+              znaleznia interesującej cię imprezy.
+            </p>
+            <div className={styles.rowIcons}>
+              <div>
+                <img src="advertising.png" />
+                <p className={styles.numbers}>15 000</p>
+                <p>Wystawców</p>
+              </div>
+
+              <div>
+                <img src="industry.png" />
+                <p className={styles.numbers}>7</p>
+                <p>Obiektów</p>
+              </div>
+
+              <div>
+                <img src="calendar.png" />
+                <p className={styles.numbers}>2000+</p>
+                <p>Imprez rocznie</p>
+              </div>
+            </div>
+            <div className={styles.buttonRow}>
+              <Link to="/">
+                <button className={styles.calendariumBtn}>
+                  Przejdź do kalendarium targowego
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.upcomingEventsContainer}>
+          <p className={styles.upcomingEventsTitle}>Nadchodzące wydarzenia</p>
+          <div className={styles.upcomingEventsLinks}>
+            {upcomingEvents.map((e) => (
+              <Link to={`/event/${e.id}`} key={e.id}>
+                <img src={e.img_url} />
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.joinUsContainer}>
+          <div className={styles.joinUsInfo}>
+            <h3>
+              Zostań naszym uzytkownikiem juz dziś i zapisuj się na wydarzenia
+            </h3>
+            <p>
+              Jesteś wystawcą targowym? Koniecznie zarejestruj się w naszym
+              serwisie! Utwórz swoje osobiste konto, wprowadź dane kontaktowe
+              wraz ze szczegółowym opisem zakresu twojej działalności oraz
+              oferowanymi przez ciebie usługami, rozwiązaniami lub produktami.
+              Bez wychodzenia z domu, wykonywania telefonów czy przeszukiwania
+              stron internetowych dołącz do imprezy targowej za pomocą jednego
+              kliknięcia. Łatwy i przejrzysty interfejs pozwoli precyzyjnie
+              wybrać stanowisko wystawowe, na mapie rozplanowanej juz
+              przestrzenie hali targowej w której będzie odbywać się
+              interesujące cię wydarzenie.
+            </p>
+            <Link to="/register">
+              <button className={styles.registerBtn}>Zostań wystawcą</button>
+            </Link>
+          </div>
+          <img src="/group.png" />
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }
 

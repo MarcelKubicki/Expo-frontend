@@ -1,0 +1,38 @@
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.pageNotFound a {
+  text-decoration: none;
+}
+
+.pageNotFound .title {
+  font-size: 150px;
+  font-weight: 700;
+}
+
+.pageNotFound .errorCode {
+  font-size: 80px;
+  color: rgb(160, 31, 31);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.pageNotFound button {
+  padding: 15px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: rgb(46, 46, 46);
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.pageNotFound button:hover {
+  opacity: 0.9;
+}

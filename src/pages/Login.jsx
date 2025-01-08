@@ -50,7 +50,7 @@ function Login() {
       console.log(JSON.stringify(res?.data));
       console.log(JSON.stringify(resProfile?.data));
 
-      const userId = res?.data?.user?.id;
+      const userId = Number(res?.data?.user?.id);
       const accessToken = res?.data?.access_token;
       const refreshToken = res?.data?.refresh_token;
       const roles = res?.data?.user?.roles;

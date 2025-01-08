@@ -49,3 +49,12 @@
   background-color: rgb(153, 0, 0);
   color: white;
 }
+.adminNav .subpagesContainer .logo {
+  font-size: 40px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.adminNav .subpagesContainer .logo span {
+  font-size: 15px;
+  vertical-align: sub;
+}

@@ -9,7 +9,7 @@ function ExpoPlanSvg({
 }) {
   const ACTIVE_COLOR = "#158207";
   const UNACTIVE_COLOR = chooseMode ? "#545454" : "#7ab372";
-  const UNOCCUPIED_COLOR = chooseMode ? "#b8b8b8" : "#ad6753";
+  const UNOCCUPIED_COLOR = "#b8b8b8";
 
   function handleClick(id) {
     const num = Number(id);

@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
 import styles from "./JoinRequestsPage.module.css";
 import ExhibEventTile from "../components/ExhibEventTile";
-import axios from "axios";
 import EventRequestModal from "../components/EventRequestModal";
 
 function JoinRequestsPage() {
   const [selectedEvent, setSelectedEvent] = useState();
   const [events, setEvents] = useState([]);
 
-  useEffect(function () {
-    async function getEvents() {
-      try {
-        const res = await fetch(
-          "http://127.0.0.1:8000/api/v1/admin/unverified_join_requests"
-        );
-        const data = await res.json();
-        console.log(data);
-        setEvents(data);
-      } catch (error) {
-        console.log(error);
+  useEffect(
+    function () {
+      async function getEvents() {
+        try {
+          const res = await fetch(
+            "http://127.0.0.1:8000/api/v1/admin/unverified_join_requests"
+          );
+          const data = await res.json();
+          console.log(data);
+          setEvents(data);
+        } catch (error) {
+          console.log(error);
+        }
       }
-    }
-    getEvents();
-  }, []);
+      getEvents();
+    },
+    [selectedEvent]
+  );
 
   return (
     <main className={styles.catalogPage}>
