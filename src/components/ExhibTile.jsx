@@ -1,6 +1,6 @@
 import styles from "./ExhibTile.module.css";
 function ExhibTile({ exhibitor, selectedExhibitor, setSelectedExhibitor }) {
-  const { id, img_url, exhib_name } = exhibitor;
+  const { id, img_url, exhib_name, short_desc } = exhibitor;
   return (
     <li
       className={`${styles.prevContainer} ${
@@ -14,9 +14,7 @@ function ExhibTile({ exhibitor, selectedExhibitor, setSelectedExhibitor }) {
 
       <div className={styles.info}>
         <p className={styles.name}>{exhib_name}</p>
-        <p className={styles.description}>
-          Tworzenie rozwiązań i systemów informatycznych
-        </p>
+        <p className={styles.description}>{short_desc}</p>
       </div>
     </li>
   );

@@ -24,17 +24,22 @@ function ProfilesVerificationPage() {
       <div className={styles.listContainer}>
         <h3>Profile czekające na zatwierdzenie</h3>
         <ul className={styles.exhibList}>
-          {exhibitors.map((e) => (
-            <ExhibTile
-              key={e.id}
-              exhibitor={e}
-              selectedExhibitor={selectedExhibitor}
-              setSelectedExhibitor={setSelectedExhibitor}
-            />
-          ))}
+          {exhibitors.length > 0 ? (
+            exhibitors.map((e) => (
+              <ExhibTile
+                key={e.id}
+                exhibitor={e}
+                selectedExhibitor={selectedExhibitor}
+                setSelectedExhibitor={setSelectedExhibitor}
+              />
+            ))
+          ) : (
+            <li className={styles.noRequestParagraph}>
+              Brak nowych zgłoszeń...
+            </li>
+          )}
         </ul>
       </div>
-
       <ExhibChecker
         setExhibitors={setExhibitors}
         exhibitor={selectedExhibitor}

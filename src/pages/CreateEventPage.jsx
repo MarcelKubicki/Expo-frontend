@@ -283,7 +283,6 @@ function CreateEventPage() {
               onChange={handlePhotosChange}
               required
             />
-            <button onClick={resetAllStates}>reset</button>
           </div>
         </div>
       </form>

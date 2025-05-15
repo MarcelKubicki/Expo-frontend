@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./AdminNav.module.css";
 import { useAuth } from "../context/AuthProvider";
 
 function AdminNav() {
   const { auth, handleLogout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <nav className={styles.adminNav}>
@@ -22,7 +23,14 @@ function AdminNav() {
           <img src="/user.png" />
           <p>{auth.username}</p>
         </div>
-        <button onClick={handleLogout}>Wyloguj</button>
+        <button
+          onClick={() => {
+            handleLogout();
+            navigate("/");
+          }}
+        >
+          Wyloguj
+        </button>
       </div>
     </nav>
   );

@@ -31,14 +31,20 @@ function JoinRequestsPage() {
       <div className={styles.listContainer}>
         <h3>Prośby czekające na zatwierdzenie</h3>
         <ul className={styles.exhibList}>
-          {events.map((e) => (
-            <ExhibEventTile
-              key={e.id}
-              exhibitor={e}
-              selectedExhibitor={selectedEvent}
-              setSelectedExhibitor={setSelectedEvent}
-            />
-          ))}
+          {events.length > 0 ? (
+            events.map((e) => (
+              <ExhibEventTile
+                key={e.id}
+                exhibitor={e}
+                selectedExhibitor={selectedEvent}
+                setSelectedExhibitor={setSelectedEvent}
+              />
+            ))
+          ) : (
+            <li className={styles.noRequestParagraph}>
+              Brak nowych zgłoszeń...
+            </li>
+          )}
         </ul>
       </div>
       {selectedEvent && (
