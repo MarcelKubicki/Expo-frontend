@@ -13,7 +13,7 @@
 .unauthorized .title {
   font-size: 160px;
   font-weight: 700;
-  color: rgb(160, 31, 31);
+  color: var(--color-button-decline);
 }
 
 .unauthorized .description {

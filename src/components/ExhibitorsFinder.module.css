@@ -1,7 +1,7 @@
 .exhibitorsFinder {
   flex: 1;
   padding: 25px 25px 25px 40px;
-  background-color: rgb(203, 203, 203);
+  background-color: var(--color-brand-tertiary);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 }
 .searchRow {
@@ -33,7 +33,7 @@
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: rgb(231, 231, 231);
+  background-color: var(--color-ui-quinary);
   padding: 10px;
   border-radius: 5px;
 }

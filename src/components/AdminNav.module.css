@@ -5,19 +5,19 @@
   left: 0;
   display: flex;
   flex-direction: column;
-  background-color: lightslategray;
-  color: white;
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-secondary);
   padding: 25px 0;
   justify-content: space-between;
 }
 .adminNav a {
   padding: 10px;
   text-decoration: none;
-  color: white;
+  color: var(--color-text-secondary);
 }
 .adminNav a:hover,
 .adminNav :global(.active) {
-  background-color: rgb(152, 172, 191);
+  background-color: var(--hilite-brand-primary);
 }
 .subpagesContainer,
 .accountContainer {
@@ -46,8 +46,8 @@
   border: none;
   border-radius: 5px;
   padding: 8px 12px;
-  background-color: rgb(153, 0, 0);
-  color: white;
+  background-color: var(--color-button-decline);
+  color: var(--color-text-secondary);
 }
 .adminNav .subpagesContainer .logo {
   font-size: 40px;

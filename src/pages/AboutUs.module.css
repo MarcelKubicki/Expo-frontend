@@ -56,7 +56,7 @@
   transition: opacity 0.3s;
 }
 .calendariumBtn {
-  background-color: #0b71a3;
+  background-color: var(--color-ui-secondary);
 }
 .calendariumBtn:hover,
 .registerBtn:hover {
@@ -113,6 +113,6 @@
   font-size: 22px;
 }
 .registerBtn {
-  background-color: #cb9409;
+  background-color: var(--color-ui-tertiary);
   margin-top: 30px;
 }

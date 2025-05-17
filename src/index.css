@@ -1,6 +1,30 @@
 @import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
 @import "https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap";
 
+:root {
+  --color-brand-primary: lightslategray;
+  --color-brand-secondary: black;
+  --color-brand-tertiary: rgb(202, 202, 202);
+
+  --hilite-brand-primary: rgb(152, 172, 191);
+
+  --color-ui-primary: #39484e;
+  --color-ui-secondary: #0b71a3;
+  --color-ui-tertiary: rgb(221, 173, 42);
+  --color-ui-quartary: white;
+  --color-ui-quinary: rgb(221, 221, 221);
+
+  --color-button-accept: rgb(83, 159, 83);
+  --color-button-decline: rgb(153, 0, 0);
+
+  --color-text-primary: #000000;
+  --color-text-secondary: #ffffff;
+  --color-text-tertiary: rgb(86, 86, 86);
+}
+
+.dark {
+}
+
 * {
   margin: 0;
   padding: 0;

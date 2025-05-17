@@ -1,5 +1,5 @@
 .item {
-  background-color: rgb(202, 202, 202);
+  background-color: var(--color-brand-tertiary);
   border-radius: 15px;
   cursor: pointer;
   transition: transform 0.4s, box-shadow 0.4s;
@@ -12,7 +12,7 @@
 
 .item a {
   text-decoration: none;
-  color: black;
+  color: var(--color-text-primary);
 }
 
 .thumbnail {
@@ -32,7 +32,7 @@
 .desc {
   font-size: 15px;
   font-weight: 300;
-  color: rgb(86, 86, 86);
+  color: var(--color-text-tertiary);
   margin-bottom: 10px;
   min-height: 2lh;
 }
@@ -58,7 +58,7 @@
 }
 
 .tile {
-  background-color: white;
+  background-color: var(--color-ui-quartary);
   padding: 5px 10px;
   border-radius: 7px;
 }

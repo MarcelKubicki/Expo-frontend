@@ -12,7 +12,7 @@
   width: 450px;
 }
 .selector select {
-  color: gray;
+  color: var(--color-text-tertiary);
 }
 .selector option:not(:first-of-type) {
   color: black;
