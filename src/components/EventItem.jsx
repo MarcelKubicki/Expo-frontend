@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./EventItem.module.css";
+import { FaRegCalendarAlt, FaList } from "react-icons/fa";
+import { IoMdPin } from "react-icons/io";
+
 import months from "../../data/months";
+import styles from "./EventItem.module.css";
 
 function getFormattedDate(startDateStr, endDateStr) {
   const startDate = new Date(startDateStr);
@@ -31,21 +34,21 @@ function EventItem({
       <Link to={`/event/${id}`}>
         <img className={styles.thumbnail} src={thumbnail} />
         <div className={styles.content}>
+          <p className={styles.title}>{title}</p>
           <div className={styles.row}>
             <div>
-              <img src="calendar.png" className={styles.icon} />
+              <FaRegCalendarAlt className={styles.icon} />
               <p>{getFormattedDate(startDate, endDate)}</p>
             </div>
           </div>
-          <p className={styles.title}>{title}</p>
           <p className={styles.desc}>{desc}</p>
           <div id="stats" className={styles.row}>
             <div className={styles.tile}>
-              <img src="options-lines.png" className={styles.icon} />
+              <FaList className={styles.icon} />
               <p>{category}</p>
             </div>
             <div className={styles.tile}>
-              <img src="localization.png" className={styles.icon} />
+              <IoMdPin className={styles.icon} />
               <p>{localization}</p>
             </div>
           </div>

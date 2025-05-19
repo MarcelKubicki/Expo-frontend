@@ -23,10 +23,6 @@
 .rowInfoContainer .rowInfoRight .rowInfoRightDesc {
   line-height: 23px;
 }
-.rowInfoContainer .rowInfoRight .rowIcons img {
-  width: 90px;
-  margin-bottom: 15px;
-}
 
 .rowInfoContainer .rowInfoRight .rowIcons div {
   display: flex;
@@ -115,4 +111,14 @@
 .registerBtn {
   background-color: var(--color-ui-tertiary);
   margin-top: 30px;
+}
+
+.statIcon {
+  font-size: 90px;
+  margin-bottom: 20px;
+}
+
+.groupIcon {
+  width: 2800px;
+  font-size: 400px;
 }

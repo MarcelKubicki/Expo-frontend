@@ -23,6 +23,15 @@
 }
 
 .dark {
+  background-color: #21252b;
+  color: white;
+
+  --color-ui-quartary: rgb(166, 166, 166);
+  --color-ui-quinary: #111111;
+  --color-brand-tertiary: #373737;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #000000;
+  --color-text-tertiary: rgb(154, 154, 154);
 }
 
 * {

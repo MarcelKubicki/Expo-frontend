@@ -1,5 +1,6 @@
 .item {
   background-color: var(--color-brand-tertiary);
+  color: var(--color-text-primary);
   border-radius: 15px;
   cursor: pointer;
   transition: transform 0.4s, box-shadow 0.4s;
@@ -40,6 +41,7 @@
 .row div {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 }
 .row {
   display: flex;
@@ -54,11 +56,12 @@
 .title {
   font-weight: bold;
   font-size: 26px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .tile {
-  background-color: var(--color-ui-quartary);
+  background-color: var(--color-ui-quinary);
+  color: var(--color-text-primary);
   padding: 5px 10px;
   border-radius: 7px;
 }

@@ -1,13 +1,15 @@
 .footer {
   background-color: var(--color-brand-primary);
   margin-top: 40px;
-  padding: 20px 200px;
+  padding: 60px 200px;
   display: flex;
   gap: 35px;
+  color: var(--color-text-secondary);
 }
 
 .footer h4 {
-  margin-bottom: 6px;
+  font-size: 19px;
+  margin-bottom: 14px;
 }
 
 .footer p {
