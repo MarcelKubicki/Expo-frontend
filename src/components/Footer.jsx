@@ -2,7 +2,7 @@ import styles from "./Footer.module.css";
 
 function Footer() {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <div>
         <h4>Dane firmowe</h4>
         <p>Expo Sp. z o.o.</p>
@@ -21,7 +21,7 @@ function Footer() {
           <p>biuro@expo.pl</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 

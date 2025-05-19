@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from "react-router-dom";
 import months from "../../data/months";
+import { IoMdPin } from "react-icons/io";
 
 function getFormattedDate(startDateStr, endDateStr) {
   const startDate = new Date(startDateStr);
@@ -65,7 +66,7 @@ function ExhibitorModal({ selectedExhibitor, setSelectedExhibitor }) {
                 <b>{exhib_name}</b>
               </p>
               <div className={styles.row}>
-                <img src="/localization.png" />
+                <IoMdPin />
                 <p>{adres}</p>
               </div>
               <div className={styles.row}>

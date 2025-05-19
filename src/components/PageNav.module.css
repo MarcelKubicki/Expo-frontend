@@ -1,5 +1,5 @@
 .header {
-  background-color: lightslategray;
+  background-color: var(--color-brand-primary);
   position: fixed;
   top: 0;
   left: 0;
@@ -30,7 +30,7 @@
 }
 .nav a {
   text-decoration: none;
-  color: black;
+  color: var(--color-text-primary);
 }
 
 .navOption {
@@ -39,15 +39,16 @@
 }
 
 .navOption:hover,
-.nav :global(.active) {
-  background-color: rgb(134, 154, 174);
+.nav :global(.active),
+.header .themeBtn:hover {
+  background-color: var(--hilite-brand-primary);
   border-bottom: 3px solid white;
-  color: white;
+  color: var(--color-text-secondary);
 }
 
 .loginBtn {
-  background-color: black;
-  color: white;
+  background-color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   border: none;
   padding: 7px 15px;
   border-radius: 4px;
@@ -58,11 +59,19 @@
 }
 
 .nav .loginBtn:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   transition: transform 0.2s;
 }
 
 .nav .loginBtn:active {
   transform: scale(0.9);
+}
+
+.header .themeBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 15px;
+  color: var(--color-text-primary);
 }

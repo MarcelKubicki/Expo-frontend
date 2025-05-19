@@ -2,16 +2,20 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import styles from "./PageNav.module.css";
 import UserNav from "./UserNav";
+import { useDarkMode } from "../hooks/useDarkMode";
+import { FaSun, FaMoon } from "react-icons/fa6";
 
 function PageNav() {
   const { auth } = useAuth();
+  const { isDark, setIsDark } = useDarkMode();
 
   return (
-    <nav className={styles.header}>
+    <header className={styles.header}>
       <Link to="/aboutUs" style={{ textDecoration: "none", color: "black" }}>
         <h1 style={{ fontSize: "40px" }}>EXPO</h1>
       </Link>
-      <div className={styles.nav}>
+
+      <nav className={styles.nav}>
         <NavLink to="/aboutUs" className={styles.navOption}>
           <p>O nas</p>
         </NavLink>
@@ -22,6 +26,13 @@ function PageNav() {
           <p>Katalog wystawców</p>
         </NavLink>
 
+        <button
+          className={styles.themeBtn}
+          onClick={() => setIsDark((theme) => !theme)}
+        >
+          {isDark ? <FaSun /> : <FaMoon />}
+        </button>
+
         <div>
           {auth?.username ? (
             <UserNav username={auth.username} />
@@ -31,8 +42,8 @@ function PageNav() {
             </Link>
           )}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
 

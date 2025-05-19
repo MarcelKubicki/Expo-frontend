@@ -12,7 +12,7 @@
   width: 450px;
 }
 .selector select {
-  color: gray;
+  color: var(--color-text-tertiary);
 }
 .selector option:not(:first-of-type) {
   color: black;
@@ -24,8 +24,12 @@
   border: none;
   border-radius: 5px;
   font-size: 16px;
-  background-color: rgb(235, 235, 235);
-  /* color: white; */
+  background-color: var(--color-ui-quinary);
+  color: var(--color-text-tertiary);
   font-weight: 300;
-  border: 1px solid black;
+  border: 1px solid rgb(86, 86, 86);
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(0.4);
 }

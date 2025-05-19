@@ -8,6 +8,8 @@ import { useEvent } from "../context/EventProvider";
 import styles from "./EventPage.module.css";
 import months from "../../data/months";
 import { useAuth } from "../context/AuthProvider";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { IoMdPin } from "react-icons/io";
 
 function getFormattedDate(startDateStr, endDateStr) {
   const startDate = new Date(startDateStr);
@@ -80,12 +82,12 @@ function EventPage() {
                 </div>
 
                 <div className={styles.date}>
-                  <img src="/calendar.png" alt="calendar_icon" />
+                  <FaRegCalendarAlt />
                   <p>{getFormattedDate(event.date_start, event.date_end)}</p>
                 </div>
 
                 <div className={styles.date}>
-                  <img src="/localization.png" alt="localization_icon" />
+                  <IoMdPin />
                   <p>{event.loc_name}</p>
                 </div>
               </div>

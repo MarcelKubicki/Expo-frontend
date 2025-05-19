@@ -1,7 +1,7 @@
 .modal {
   width: 95%;
   min-height: 450px;
-  background-color: rgb(221, 221, 221);
+  background-color: var(--color-ui-quinary);
   border-radius: 10px;
   position: relative;
   text-align: justify;
@@ -12,19 +12,19 @@
   height: 500px;
   border: 2px dashed black;
   border-radius: 10px;
-  background-color: rgb(231, 231, 231);
+  background-color: var(--color-ui-quinary);
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: rgb(95, 95, 95);
+  color: var(--color-text-tertiary);
 }
 .closeBtn {
   position: absolute;
   top: -11px;
   right: -11px;
-  background-color: black;
-  color: white;
+  background-color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   padding: 8px 11px;
   border: none;
   border-radius: 45px;
@@ -37,7 +37,7 @@
 .basicInfoContainer {
   display: flex;
   gap: 20px;
-  background-color: white;
+  background-color: var(--color-ui-quartary);
 }
 .rowsContatiner {
   padding: 10px 0;
@@ -51,8 +51,8 @@
   width: 20px;
 }
 .standNumber {
-  background-color: white;
-  color: black;
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   padding: 5px;
   border-radius: 5px;
 }
@@ -67,7 +67,7 @@
 .img_alt {
   width: 80px;
   height: 40px;
-  background-color: white;
+  background-color: var(--color-ui-quartary);
   margin: 0 10px;
 }
 .descTag {
@@ -101,11 +101,13 @@
 .buttonsContainer button {
   border: none;
   border-radius: 5px;
-  background-color: rgb(176, 176, 176);
+  background-color: var(--color-brand-tertiary);
 }
 .modal .buttonsContainer .accept {
-  background-color: rgb(80, 160, 80);
+  background-color: var(--color-button-accept);
+  color: white;
 }
 .modal .buttonsContainer .decline {
-  background-color: rgb(201, 40, 40);
+  background-color: var(--color-button-decline);
+  color: white;
 }

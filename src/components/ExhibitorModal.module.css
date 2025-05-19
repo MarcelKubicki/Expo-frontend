@@ -1,7 +1,7 @@
 .modal {
   width: 90%;
   height: 90%;
-  background-color: rgb(57, 72, 78);
+  background-color: var(--color-ui-primary);
   border-radius: 10px;
   position: relative;
   text-align: justify;
@@ -22,7 +22,7 @@
   width: 70%;
 }
 .modalUnactive p {
-  color: rgb(63, 63, 63);
+  color: var(---color-text-tertiary);
   font-size: 20px;
   font-family: "Marker Felt";
 }
@@ -46,7 +46,7 @@
 .basicInfoContainer {
   display: flex;
   gap: 20px;
-  background-color: white;
+  background-color: var(--color-ui-quartary);
   padding: 12px 15px;
   border-radius: 8px 8px 0 0;
 }
@@ -88,7 +88,7 @@
   list-style: inside square;
 }
 .historyList li {
-  background-color: rgb(206, 206, 206);
+  background-color: var(--color-brand-tertiary);
   padding: 7px 15px;
   border-radius: 12px;
   margin-bottom: 7px;
@@ -96,10 +96,10 @@
 }
 .historyList li:hover {
   transform: scale(1.03);
-  background-color: rgb(221, 173, 42);
+  background-color: var(--color-ui-tertiary);
 }
 .description {
-  background-color: white;
+  background-color: var(--color-ui-quartary);
   padding: 10px 20px;
   border-radius: 0 0 8px 8px;
 }

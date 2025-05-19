@@ -1,6 +1,6 @@
 .prevContainer {
-  background-color: #39484e;
-  color: white;
+  background-color: var(--color-ui-primary);
+  color: var(--color-text-secondary);
   padding: 13px 15px;
   margin-bottom: 4px;
   display: flex;
@@ -26,8 +26,8 @@
   font-size: 14px;
   position: absolute;
   right: 15px;
-  color: black;
-  background-color: white;
+  color: var(--color-text-primary);
+  background-color: var(--color-ui-quartary);
   border-radius: 5px;
   padding: 3px 7px;
 }

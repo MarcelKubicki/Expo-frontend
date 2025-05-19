@@ -1,10 +1,15 @@
-import styles from "./AboutUs.module.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaUserTie, FaRegCalendarAlt } from "react-icons/fa";
+import { MdGroups } from "react-icons/md";
+import { BsFillBuildingsFill } from "react-icons/bs";
+
+import MapPolandSvg from "../components/MapPolandSvg";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
-import MapPolandSvg from "../components/MapPolandSvg";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "../axios";
+
+import styles from "./AboutUs.module.css";
 
 function AboutUs() {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -44,19 +49,19 @@ function AboutUs() {
             </p>
             <div className={styles.rowIcons}>
               <div>
-                <img src="advertising.png" />
+                <FaUserTie className={styles.statIcon} />
                 <p className={styles.numbers}>15 000</p>
                 <p>Wystawców</p>
               </div>
 
               <div>
-                <img src="industry.png" />
+                <BsFillBuildingsFill className={styles.statIcon} />
                 <p className={styles.numbers}>7</p>
                 <p>Obiektów</p>
               </div>
 
               <div>
-                <img src="calendar.png" />
+                <FaRegCalendarAlt className={styles.statIcon} />
                 <p className={styles.numbers}>2000+</p>
                 <p>Imprez rocznie</p>
               </div>
@@ -103,7 +108,7 @@ function AboutUs() {
               <button className={styles.registerBtn}>Zostań wystawcą</button>
             </Link>
           </div>
-          <img src="/group.png" />
+          <MdGroups className={styles.groupIcon} />
         </div>
       </main>
       <Footer />
