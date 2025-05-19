@@ -1,23 +1,25 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
-import PageNotFound from "./pages/PageNotFound";
-import AboutUs from "./pages/AboutUs";
-import EventPage from "./pages/EventPage";
-import CatalogPage from "./pages/CatalogPage";
-import Register from "./pages/Register";
-import JoinEventModal from "./components/JoinEventModal";
-import RequireAuth from "./components/RequireAuth";
-import Unauthorized from "./components/Unauthorized";
-import ProfilePage from "./pages/ProfilePage";
-import AdminPage from "./pages/AdminPage";
-import EventProviderLayout from "./pages/EventProviderLayout";
-import UserLayout from "./pages/UserLayout";
-import CreateEventPage from "./pages/CreateEventPage";
-import ProfilesVerificationPage from "./pages/ProfilesVerificationPage";
-import JoinRequestsPage from "./pages/JoinRequestsPage";
-import ScrollToTop from "./components/ScrollToTop";
-import NotificationsPage from "./pages/NotificationsPage";
+import EventProviderLayout from "./ui/EventProviderLayout";
+import UserLayout from "./ui/UserLayout";
+import ScrollToTop from "./ui/ScrollToTop";
+import JoinEventModal from "./features/user/event/JoinEventModal/JoinEventModal";
+import RequireAuth from "./ui/RequireAuth";
+
+import Calendarium from "./pages/user/Calendarium/Calendarium";
+import Login from "./pages/user/Login/Login";
+import PageNotFound from "./pages/user/PageNotFound/PageNotFound";
+import AboutUs from "./pages/user/AboutUs/AboutUs";
+import EventPage from "./pages/user/EventPage/EventPage";
+import CatalogPage from "./pages/user/CatalogPage/CatalogPage";
+import Register from "./pages/user/Register/Register";
+import Unauthorized from "./pages/user/Unauthorized/Unauthorized";
+import ProfilePage from "./pages/user/ProfilePage/ProfilePage";
+import NotificationsPage from "./pages/user/NotificationsPage/NotificationsPage";
+
+import AdminPage from "./pages/admin/AdminPage/AdminPage";
+import CreateEventPage from "./pages/admin/CreateEventPage/CreateEventPage";
+import ProfilesVerificationPage from "./pages/admin/ProfilesVerificationPage/ProfilesVerificationPage";
+import JoinRequestsPage from "./pages/admin/JoinRequestsPage/JoinRequestsPage";
 
 function App() {
   return (
@@ -45,7 +47,7 @@ function App() {
             </Route>
           </Route>
 
-          <Route index element={<Homepage />} />
+          <Route index element={<Calendarium />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route element={<RequireAuth allowedRoles={["user"]} />}>
