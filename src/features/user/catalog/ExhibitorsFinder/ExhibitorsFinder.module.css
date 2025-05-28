@@ -1,10 +1,12 @@
 .exhibitorsFinder {
   flex: 1;
-  padding: 25px 25px 25px 40px;
+
   background-color: var(--color-brand-tertiary);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 70px);
 }
 .searchRow {
+  padding: 15px 10px 5px 10px;
   display: flex;
   gap: 10px;
 }
@@ -24,10 +26,11 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 680px;
+
+  width: 100%;
 }
 .listContainer h2 {
-  margin: 15px 0;
+  margin-top: 10px;
 }
 .listContainer .exhibList {
   flex: 1;
@@ -35,5 +38,16 @@
   overflow-y: auto;
   background-color: var(--color-ui-quinary);
   padding: 10px;
-  border-radius: 5px;
+}
+.finderBar,
+.select {
+  background-color: var(--color-ui-quinary);
+  color: var(--color-text-tertiary);
+  font-weight: 300;
+  border: 1px solid rgb(86, 86, 86);
+}
+.listContainer .listContainerHeader {
+  background-color: var(--color-ui-quinary);
+  padding: 5px 10px;
+  border-radius: 5px 5px 0 0;
 }

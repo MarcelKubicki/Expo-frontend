@@ -1,30 +1,29 @@
-import styles from "./ExhibitorsFinder.module.css";
-import ExhibitorItem from "../ExhibitorItem/ExhibitorItem";
-import { categories } from "../../../../../data/categories";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
+import { categories } from "../../../../../data/categories";
+import { useExhibitors } from "../useExhibitors";
+import { clearParams } from "../../../../utils/helpers";
+import ExhibitorItem from "../ExhibitorItem/ExhibitorItem";
+import Spinner from "../../../../ui/Spinner/Spinner";
+import styles from "./ExhibitorsFinder.module.css";
 
 function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
-  const [exhibitors, setExhibitors] = useState([]);
   const [exhibName, setExhibName] = useState("");
   const [category, setCategory] = useState("");
+  const [, setSearchParams] = useSearchParams();
+  const { isLoading, exhibitors, error } = useExhibitors();
 
   useEffect(
     function () {
-      async function get_exhibitors() {
-        const res = await fetch(
-          "http://127.0.0.1:8000/api/v1/exhibitors?" +
-            new URLSearchParams({
-              nam: exhibName,
-              cat: category,
-            }).toString()
-        );
-        const data = await res.json();
-        setExhibitors(data);
-      }
-
-      get_exhibitors();
+      const params = clearParams({
+        nam: exhibName,
+        cat: category,
+      });
+      if (Object.hasOwn(params, "nam") && params?.nam.length < 3) return;
+      setSearchParams(params);
     },
-    [exhibName, category]
+    [exhibName, category, setSearchParams]
   );
 
   return (
@@ -55,16 +54,22 @@ function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
       </div>
 
       <div className={styles.listContainer}>
-        <h2>Lista wystawców</h2>
+        <h2>
+          <span className={styles.listContainerHeader}>Lista wystawców</span>
+        </h2>
         <ul className={styles.exhibList}>
-          {exhibitors.map((e) => (
-            <ExhibitorItem
-              key={e.exhib_name}
-              exhibitor={e}
-              selectedExhibitor={selectedExhibitor}
-              setSelectedExhibitor={setSelectedExhibitor}
-            />
-          ))}
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            exhibitors.map((e) => (
+              <ExhibitorItem
+                key={e.exhib_name}
+                exhibitor={e}
+                selectedExhibitor={selectedExhibitor}
+                setSelectedExhibitor={setSelectedExhibitor}
+              />
+            ))
+          )}
         </ul>
       </div>
     </div>
