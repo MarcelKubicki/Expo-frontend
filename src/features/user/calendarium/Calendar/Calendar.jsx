@@ -3,16 +3,15 @@ import Selector from "../Selector/Selector";
 import EventsGrid from "../EventsGrid/EventsGrid";
 
 import { useEvents } from "../useEvents";
+import Spinner from "../../../../ui/Spinner/Spinner";
 
 function Calendar() {
   const { isLoading, error, events } = useEvents();
 
-  if (isLoading) return <div>Loading... </div>;
-
   return (
     <div className={styles.calendar}>
       <Selector />
-      <EventsGrid events={events} />
+      {isLoading ? <Spinner /> : <EventsGrid events={events} />}
     </div>
   );
 }

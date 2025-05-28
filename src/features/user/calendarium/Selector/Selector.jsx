@@ -50,18 +50,7 @@ function Selector() {
       <SelectLocalization register={register} className={styles.select} />
       <input type="date" className={styles.select} {...register("sdate")} />
       <input type="date" className={styles.select} {...register("edate")} />
-      <button
-        className={styles.resetBtn}
-        onClick={() =>
-          reset({
-            nam: "",
-            cat: "",
-            loc: "",
-            sdate: "",
-            edate: "",
-          })
-        }
-      >
+      <button type="button" className={styles.resetBtn} onClick={() => reset()}>
         reset
       </button>
     </form>
