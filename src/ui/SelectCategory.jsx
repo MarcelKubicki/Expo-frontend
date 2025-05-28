@@ -1,10 +1,9 @@
 import { categories } from "../../data/categories";
 
 function SelectCategory({
-  category,
-  setCategory,
-  disabled = false,
+  register,
   className,
+  disabled = false,
   required = false,
   id = "select",
 }) {
@@ -12,14 +11,12 @@ function SelectCategory({
     <select
       id={id}
       className={className}
-      value={category}
-      onChange={(e) => setCategory(e.target.value)}
       disabled={disabled}
       required={required}
+      defaultValue={""}
+      {...register("cat")}
     >
-      <option selected value="">
-        Kategoria
-      </option>
+      <option value="">Kategoria</option>
       {categories.map((c) => (
         <option key={c.value} value={c.value}>
           {c.name}

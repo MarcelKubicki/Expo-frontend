@@ -1,50 +1,17 @@
 import styles from "./Calendar.module.css";
 import Selector from "../Selector/Selector";
 import EventsGrid from "../EventsGrid/EventsGrid";
-import { useEffect, useState } from "react";
+
+import { useEvents } from "../useEvents";
 
 function Calendar() {
-  const [events, setEvents] = useState([]);
-  const [eventName, setEventName] = useState("");
-  const [category, setCategory] = useState("");
-  const [localization, setLocalization] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  useEffect(
-    function () {
-      async function fetchEvents() {
-        const res = await fetch(
-          "http://127.0.0.1:8000/api/v1/events?" +
-            new URLSearchParams({
-              nam: eventName,
-              cat: category,
-              loc: localization,
-              sdate: startDate,
-              edate: endDate,
-            }).toString()
-        );
-        const data = await res.json();
-        setEvents(data);
-      }
-      fetchEvents();
-    },
-    [eventName, category, localization, startDate, endDate]
-  );
+  const { isLoading, error, events } = useEvents();
+
+  if (isLoading) return <div>Loading... </div>;
 
   return (
     <div className={styles.calendar}>
-      <Selector
-        eventName={eventName}
-        setEventName={setEventName}
-        category={category}
-        setCategory={setCategory}
-        localization={localization}
-        setLocalization={setLocalization}
-        startDate={startDate}
-        setStartDate={setStartDate}
-        endDate={endDate}
-        setEndDate={setEndDate}
-      />
+      <Selector />
       <EventsGrid events={events} />
     </div>
   );

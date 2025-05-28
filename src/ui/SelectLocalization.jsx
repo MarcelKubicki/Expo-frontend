@@ -1,4 +1,5 @@
 function SelectLocalization({
+  register,
   localization,
   setLocalization,
   className,
@@ -7,13 +8,11 @@ function SelectLocalization({
   return (
     <select
       className={className}
-      value={localization}
-      onChange={(e) => setLocalization(e.target.value)}
       required={required}
+      defaultValue={""}
+      {...register("loc")}
     >
-      <option selected value="">
-        Lokalizacja
-      </option>
+      <option value="">Lokalizacja</option>
       <option value="Kielce">Kielce</option>
       <option value="Warszawa">Warszawa</option>
     </select>

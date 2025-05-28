@@ -1,4 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import EventProviderLayout from "./ui/EventProviderLayout";
 import UserLayout from "./ui/UserLayout";
 import ScrollToTop from "./ui/ScrollToTop";
@@ -21,48 +23,59 @@ import CreateEventPage from "./pages/admin/CreateEventPage/CreateEventPage";
 import ProfilesVerificationPage from "./pages/admin/ProfilesVerificationPage/ProfilesVerificationPage";
 import JoinRequestsPage from "./pages/admin/JoinRequestsPage/JoinRequestsPage";
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10 * 60 * 1000,
+    },
+  },
+});
+
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
-        <Route path="/adminPanel" element={<AdminPage />}>
-          <Route index element={<Navigate to="createEvent" />} />
-          <Route path="createEvent" element={<CreateEventPage />} />
-          <Route
-            path="profilesVerification"
-            element={<ProfilesVerificationPage />}
-          />
-          <Route path="joinRequests" element={<JoinRequestsPage />} />
-        </Route>
-        {/* </Route> */}
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
+          <Route path="/adminPanel" element={<AdminPage />}>
+            <Route index element={<Navigate to="createEvent" />} />
+            <Route path="createEvent" element={<CreateEventPage />} />
+            <Route
+              path="profilesVerification"
+              element={<ProfilesVerificationPage />}
+            />
+            <Route path="joinRequests" element={<JoinRequestsPage />} />
+          </Route>
+          {/* </Route> */}
 
-        <Route element={<UserLayout />}>
-          <Route element={<EventProviderLayout />}>
-            <Route path="/event/:eventId" element={<EventPage />}>
-              <Route element={<RequireAuth allowedRoles={["user"]} />}>
-                <Route path="join" element={<JoinEventModal />} />
+          <Route element={<UserLayout />}>
+            <Route element={<EventProviderLayout />}>
+              <Route path="/event/:eventId" element={<EventPage />}>
+                <Route element={<RequireAuth allowedRoles={["user"]} />}>
+                  <Route path="join" element={<JoinEventModal />} />
+                </Route>
               </Route>
             </Route>
+
+            <Route index element={<Calendarium />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route element={<RequireAuth allowedRoles={["user"]} />}>
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
+            </Route>
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            <Route path="unauthorized" element={<Unauthorized />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
-
-          <Route index element={<Calendarium />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/aboutUs" element={<AboutUs />} />
-          <Route element={<RequireAuth allowedRoles={["user"]} />}>
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/notifications" element={<NotificationsPage />} />
-          </Route>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          <Route path="unauthorized" element={<Unauthorized />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

@@ -1,54 +1,70 @@
-import styles from "./Selector.module.css";
+import { useSearchParams } from "react-router-dom";
+import { useForm, useWatch } from "react-hook-form";
+import { useEffect } from "react";
+
+import { clearParams } from "../../../../utils/helpers";
 import SelectCategory from "../../../../ui/SelectCategory";
 import SelectLocalization from "../../../../ui/SelectLocalization";
+import styles from "./Selector.module.css";
 
-function Selector({
-  eventName,
-  setEventName,
-  category,
-  setCategory,
-  localization,
-  setLocalization,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate,
-}) {
+function Selector() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const defaultValues = {
+    nam: searchParams.get("nam") || "",
+    cat: searchParams.get("cat") || "",
+    loc: searchParams.get("loc") || "",
+    sdate: searchParams.get("sdate") || "",
+    edate: searchParams.get("edate") || "",
+  };
+
+  const { register, control, reset } = useForm({
+    defaultValues,
+    resetOptions: {
+      keepDirtyValues: true,
+      keepErrors: true,
+    },
+  });
+  const watchedFields = useWatch({ control });
+
+  useEffect(
+    function () {
+      const selectedFilters = clearParams(watchedFields);
+      if (Object.hasOwn(selectedFilters, "nam"))
+        if (selectedFilters.nam.length < 3) return;
+      setSearchParams(selectedFilters);
+    },
+    [watchedFields, setSearchParams]
+  );
+
   return (
-    <div className={styles.selector}>
+    <form className={styles.selector}>
       <input
         className={styles.searchbar}
         type="search"
         placeholder="Wpisz nazwe wydarzenia..."
-        value={eventName}
-        onChange={(e) => setEventName(e.target.value)}
+        autoFocus
+        {...register("nam", { minLength: 3 })}
       />
-
-      <SelectCategory
-        category={category}
-        setCategory={setCategory}
-        className={styles.select}
-      />
-
-      <SelectLocalization
-        localization={localization}
-        setLocalization={setLocalization}
-        className={styles.select}
-      />
-
-      <input
-        type="date"
-        className={styles.select}
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
-      <input
-        type="date"
-        className={styles.select}
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-      />
-    </div>
+      <SelectCategory register={register} className={styles.select} />
+      <SelectLocalization register={register} className={styles.select} />
+      <input type="date" className={styles.select} {...register("sdate")} />
+      <input type="date" className={styles.select} {...register("edate")} />
+      <button
+        className={styles.resetBtn}
+        onClick={() =>
+          reset({
+            nam: "",
+            cat: "",
+            loc: "",
+            sdate: "",
+            edate: "",
+          })
+        }
+      >
+        reset
+      </button>
+    </form>
   );
 }
 
