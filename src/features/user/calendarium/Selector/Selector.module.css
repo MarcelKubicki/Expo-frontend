@@ -1,11 +1,6 @@
 .selector {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 30px;
-  padding-bottom: 20px;
-  column-gap: 12px;
+  width: 82%;
+  margin: 20px auto;
 }
 
 .searchbar {
@@ -28,6 +23,8 @@
   color: var(--color-text-tertiary);
   font-weight: 300;
   border: 1px solid rgb(86, 86, 86);
+  margin-right: 10px;
+  margin-bottom: 8px;
 }
 
 ::-webkit-calendar-picker-indicator {

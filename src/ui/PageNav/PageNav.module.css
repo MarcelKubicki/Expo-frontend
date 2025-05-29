@@ -1,21 +1,64 @@
-.header {
+.header,
+.headerMobile {
   background-color: var(--color-brand-primary);
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100dvw;
   height: 70px;
+  z-index: 100;
+}
+
+.header,
+.headerMobile .basicHeaderMobile {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 200px;
+
   z-index: 100;
+}
+
+.headerMobile .basicHeaderMobile {
+  height: inherit;
+}
+
+.headerMobile .menuBurger {
+  font-size: 40px;
+  margin-left: 24px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headerMobile .loginBtn {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-secondary);
+  border: none;
+  padding: 6px 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 300;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.headerMobile .themeBtn {
+  margin-right: 24px;
+}
+
+.header h1 {
+  font-size: 40px;
+  margin-left: 80px;
 }
 
 .nav {
   display: flex;
   align-items: stretch;
   height: 100%;
+  margin-right: 80px;
 }
 
 .navOption,
@@ -25,10 +68,13 @@
   padding: 0 15px;
 }
 
-.nav p {
+.nav p,
+.navMobile p {
   font-size: 19px;
 }
-.nav a {
+
+.nav a,
+.navMobile a {
   text-decoration: none;
   color: var(--color-text-primary);
 }
@@ -68,10 +114,31 @@
   transform: scale(0.9);
 }
 
-.header .themeBtn {
+.header .themeBtn,
+.headerMobile .themeBtn {
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0 15px;
   color: var(--color-text-primary);
+}
+
+.navMobile {
+  background-color: var(--color-brand-primary);
+  border-top: 1px solid var(--hilite-brand-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 24px 18px 24px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -164px;
+  transition: top 0.4s ease-in-out;
+  z-index: 99;
+}
+
+.navMobile.active {
+  top: 70px;
+  box-shadow: 0 1px 5px black;
 }
