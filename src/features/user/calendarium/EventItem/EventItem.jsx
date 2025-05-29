@@ -1,23 +1,9 @@
-import { Link } from "react-router-dom";
 import { FaRegCalendarAlt, FaList } from "react-icons/fa";
 import { IoMdPin } from "react-icons/io";
+import { Link } from "react-router-dom";
 
-import months from "../../../../../data/months";
+import { getFormattedDate } from "../../../../utils/helpers";
 import styles from "./EventItem.module.css";
-
-function getFormattedDate(startDateStr, endDateStr) {
-  const startDate = new Date(startDateStr);
-  const endDate = new Date(endDateStr);
-  const isSameMonth = startDate.getMonth() === endDate.getMonth();
-  const startDay = startDate.getDate();
-  const endDay = endDate.getDate();
-
-  return `${startDay < 10 ? `0${startDay}` : startDay} ${
-    isSameMonth ? "" : months[startDate.getMonth()]
-  } - ${endDay < 10 ? `0${endDay}` : endDay} ${
-    months[endDate.getMonth()]
-  } ${startDate.getFullYear()}`;
-}
 
 function EventItem({
   id,

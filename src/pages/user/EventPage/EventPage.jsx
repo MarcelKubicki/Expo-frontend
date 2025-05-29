@@ -1,71 +1,60 @@
 import { useEffect, useState, useRef } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import Footer from "../../../ui/Footer/Footer";
-import ExpoPlanSvg from "../../../features/user/event/ExpoPlanSvg/ExpoPlanSvg";
-import ExhibitorsList from "../../../features/user/event/ExhibitorsList/ExhibitorsList";
-import { useEvent } from "../../../context/EventProvider";
-import styles from "./EventPage.module.css";
-import months from "../../../../data/months";
-import { useAuth } from "../../../context/AuthProvider";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoMdPin } from "react-icons/io";
 
-function getFormattedDate(startDateStr, endDateStr) {
-  const startDate = new Date(startDateStr);
-  const endDate = new Date(endDateStr);
-  const isSameMonth = startDate.getMonth() === endDate.getMonth();
-
-  return `${startDate.getDate()} ${
-    isSameMonth ? "" : months[startDate.getMonth()]
-  } - ${endDate.getDate()} ${
-    months[endDate.getMonth()]
-  } ${startDate.getFullYear()}`;
-}
+import { getFormattedDate } from "../../../utils/helpers";
+import { useAuth } from "../../../context/AuthProvider";
+import { useEvent } from "../../../context/EventProvider";
+import { useEventInfo } from "../../../features/user/event/useEventInfo";
+import Footer from "../../../ui/Footer/Footer";
+import ExpoPlanSvg from "../../../features/user/event/ExpoPlanSvg/ExpoPlanSvg";
+import ExhibitorsList from "../../../features/user/event/ExhibitorsList/ExhibitorsList";
+import Spinner from "../../../ui/Spinner/Spinner";
+import styles from "./EventPage.module.css";
 
 function EventPage() {
+  const { isLoading, data, error } = useEventInfo();
   const { auth } = useAuth();
-  const { eventId } = useParams();
+
+  const { activeStands, setActiveStands, isTakingPart, setIsTakingPart } =
+    useEvent();
   const [event, setEvent] = useState([]);
   const [mapPosition, setMapPosition] = useState();
   const [selectedStand, setSelectedStand] = useState(null);
-  const { activeStands, setActiveStands, isTakingPart, setIsTakingPart } =
-    useEvent();
   const scrollableContainerRef = useRef(null);
   const itemRefs = useRef([]);
 
   useEffect(
     function () {
-      async function fetchEvent() {
-        const res = await fetch(
-          `http://127.0.0.1:8000/api/v1/events/event/${eventId}`
-        );
-        const data = await res.json();
+      if (!isLoading) {
         setEvent(data);
-        setMapPosition([data.lat, data.lng]);
+        setMapPosition([data?.lat, data?.lng]);
         setActiveStands(() => {
-          const active = data.exhibitors.filter((e) => e.is_verified);
+          const active = data?.exhibitors.filter((e) => e.is_verified);
           return active.map((e) => e.stand_num);
         });
         setIsTakingPart(() => {
-          const result = data.exhibitors.filter(
+          const result = data?.exhibitors.filter(
             (e) => e.user_id === auth.userId
           );
 
           return result.length > 0;
         });
       }
-      fetchEvent();
     },
-    [eventId, setActiveStands, auth.userId]
+    [isLoading, data, setActiveStands, auth.userId]
   );
 
-  const scrollToItem = (index) => {
+  function scrollToItem(index) {
     itemRefs.current[index]?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
     });
-  };
+  }
+
+  if (isLoading) return <Spinner />;
 
   return (
     <>
