@@ -1,66 +1,81 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
-import PageNotFound from "./pages/PageNotFound";
-import AboutUs from "./pages/AboutUs";
-import EventPage from "./pages/EventPage";
-import CatalogPage from "./pages/CatalogPage";
-import Register from "./pages/Register";
-import JoinEventModal from "./components/JoinEventModal";
-import RequireAuth from "./components/RequireAuth";
-import Unauthorized from "./components/Unauthorized";
-import ProfilePage from "./pages/ProfilePage";
-import AdminPage from "./pages/AdminPage";
-import EventProviderLayout from "./pages/EventProviderLayout";
-import UserLayout from "./pages/UserLayout";
-import CreateEventPage from "./pages/CreateEventPage";
-import ProfilesVerificationPage from "./pages/ProfilesVerificationPage";
-import JoinRequestsPage from "./pages/JoinRequestsPage";
-import ScrollToTop from "./components/ScrollToTop";
-import NotificationsPage from "./pages/NotificationsPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import EventProviderLayout from "./ui/EventProviderLayout";
+import UserLayout from "./ui/UserLayout";
+import ScrollToTop from "./ui/ScrollToTop";
+import JoinEventModal from "./features/user/event/JoinEventModal/JoinEventModal";
+import RequireAuth from "./ui/RequireAuth";
+
+import Calendarium from "./pages/user/Calendarium/Calendarium";
+import Login from "./pages/user/Login/Login";
+import PageNotFound from "./pages/user/PageNotFound/PageNotFound";
+import AboutUs from "./pages/user/AboutUs/AboutUs";
+import EventPage from "./pages/user/EventPage/EventPage";
+import CatalogPage from "./pages/user/CatalogPage/CatalogPage";
+import Register from "./pages/user/Register/Register";
+import Unauthorized from "./pages/user/Unauthorized/Unauthorized";
+import ProfilePage from "./pages/user/ProfilePage/ProfilePage";
+import NotificationsPage from "./pages/user/NotificationsPage/NotificationsPage";
+
+import AdminPage from "./pages/admin/AdminPage/AdminPage";
+import CreateEventPage from "./pages/admin/CreateEventPage/CreateEventPage";
+import ProfilesVerificationPage from "./pages/admin/ProfilesVerificationPage/ProfilesVerificationPage";
+import JoinRequestsPage from "./pages/admin/JoinRequestsPage/JoinRequestsPage";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10 * 60 * 1000,
+    },
+  },
+});
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
-        <Route path="/adminPanel" element={<AdminPage />}>
-          <Route index element={<Navigate to="createEvent" />} />
-          <Route path="createEvent" element={<CreateEventPage />} />
-          <Route
-            path="profilesVerification"
-            element={<ProfilesVerificationPage />}
-          />
-          <Route path="joinRequests" element={<JoinRequestsPage />} />
-        </Route>
-        {/* </Route> */}
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
+          <Route path="/adminPanel" element={<AdminPage />}>
+            <Route index element={<Navigate to="createEvent" />} />
+            <Route path="createEvent" element={<CreateEventPage />} />
+            <Route
+              path="profilesVerification"
+              element={<ProfilesVerificationPage />}
+            />
+            <Route path="joinRequests" element={<JoinRequestsPage />} />
+          </Route>
+          {/* </Route> */}
 
-        <Route element={<UserLayout />}>
-          <Route element={<EventProviderLayout />}>
-            <Route path="/event/:eventId" element={<EventPage />}>
-              <Route element={<RequireAuth allowedRoles={["user"]} />}>
-                <Route path="join" element={<JoinEventModal />} />
+          <Route element={<UserLayout />}>
+            <Route element={<EventProviderLayout />}>
+              <Route path="/event/:eventId" element={<EventPage />}>
+                <Route element={<RequireAuth allowedRoles={["user"]} />}>
+                  <Route path="join" element={<JoinEventModal />} />
+                </Route>
               </Route>
             </Route>
+
+            <Route index element={<Calendarium />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route element={<RequireAuth allowedRoles={["user"]} />}>
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
+            </Route>
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            <Route path="unauthorized" element={<Unauthorized />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
-
-          <Route index element={<Homepage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/aboutUs" element={<AboutUs />} />
-          <Route element={<RequireAuth allowedRoles={["user"]} />}>
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/notifications" element={<NotificationsPage />} />
-          </Route>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          <Route path="unauthorized" element={<Unauthorized />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

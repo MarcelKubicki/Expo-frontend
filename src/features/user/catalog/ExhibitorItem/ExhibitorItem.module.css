@@ -1,0 +1,43 @@
+.prevContainer {
+  background-color: var(--color-ui-primary);
+  color: white;
+  padding: 13px 15px;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 7px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+.prevContainer:hover,
+.activePrevContainer {
+  background-color: var(--hilte-brand-primary);
+}
+
+.prevContainer img {
+  max-width: 75px;
+  max-height: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+.category {
+  font-size: 14px;
+  position: absolute;
+  right: 15px;
+  color: var(--color-text-primary);
+  background-color: var(--color-ui-quartary);
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+.name {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.description {
+  font-size: 13px;
+}
