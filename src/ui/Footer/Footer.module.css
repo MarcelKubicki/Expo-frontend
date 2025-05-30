@@ -7,6 +7,24 @@
   color: var(--color-text-secondary);
 }
 
+@media (max-width: 850px) {
+  .footer {
+    padding: 30px 100px;
+  }
+}
+
+@media (max-width: 650px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 490px) {
+  .footer {
+    padding: 30px 40px;
+  }
+}
+
 .footer h4 {
   font-size: 19px;
   margin-bottom: 14px;

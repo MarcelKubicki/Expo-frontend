@@ -10,9 +10,12 @@ import Footer from "../../../ui/Footer/Footer";
 import axios from "../../../services/axios";
 
 import styles from "./AboutUs.module.css";
+import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
 function AboutUs() {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const width = useWindowWidth();
+  const isMobile = width < 800;
 
   useEffect(function () {
     async function fetch_upcoming() {
@@ -36,10 +39,18 @@ function AboutUs() {
       <main className={styles.aboutUs}>
         <div className={styles.rowInfoContainer}>
           <div className={styles.rowInfoLeft}>
-            <MapPolandSvg />
+            {isMobile ? (
+              <h3>Śledzimy największe obiekty targowe w Polsce</h3>
+            ) : (
+              <MapPolandSvg />
+            )}
           </div>
           <div className={styles.rowInfoRight}>
-            <h3>Śledzimy największe obiekty targowe w Polsce</h3>
+            {isMobile ? (
+              <MapPolandSvg />
+            ) : (
+              <h3>Śledzimy największe obiekty targowe w Polsce</h3>
+            )}
             <p className={styles.rowInfoRightDesc}>
               Oferujemy wgląd do kalendarza imprez targowych odbywających się w
               czołowych obiektach na terenie całej polski. Dzięki nam będziesz
@@ -92,6 +103,7 @@ function AboutUs() {
             <h3>
               Zostań naszym uzytkownikiem juz dziś i zapisuj się na wydarzenia
             </h3>
+            {isMobile && <MdGroups className={styles.groupIcon} />}
             <p>
               Jesteś wystawcą targowym? Koniecznie zarejestruj się w naszym
               serwisie! Utwórz swoje osobiste konto, wprowadź dane kontaktowe
@@ -108,7 +120,7 @@ function AboutUs() {
               <button className={styles.registerBtn}>Zostań wystawcą</button>
             </Link>
           </div>
-          <MdGroups className={styles.groupIcon} />
+          {!isMobile && <MdGroups className={styles.groupIcon} />}
         </div>
       </main>
       <Footer />
