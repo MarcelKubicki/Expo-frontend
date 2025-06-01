@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import EventProviderLayout from "./ui/EventProviderLayout";
 import UserLayout from "./ui/UserLayout";
 import ScrollToTop from "./ui/ScrollToTop";
@@ -22,6 +23,7 @@ import AdminPage from "./pages/admin/AdminPage/AdminPage";
 import CreateEventPage from "./pages/admin/CreateEventPage/CreateEventPage";
 import ProfilesVerificationPage from "./pages/admin/ProfilesVerificationPage/ProfilesVerificationPage";
 import JoinRequestsPage from "./pages/admin/JoinRequestsPage/JoinRequestsPage";
+import ExhibitorModal from "./features/user/catalog/ExhibitorModal/ExhibitorModal";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,7 +62,9 @@ function App() {
             </Route>
 
             <Route index element={<Calendarium />} />
-            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/catalog" element={<CatalogPage />}>
+              <Route path=":exhibitorId" element={<ExhibitorModal />} />
+            </Route>
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route element={<RequireAuth allowedRoles={["user"]} />}>
               <Route path="/profile" element={<ProfilePage />} />

@@ -8,7 +8,7 @@ import ExhibitorItem from "../ExhibitorItem/ExhibitorItem";
 import Spinner from "../../../../ui/Spinner/Spinner";
 import styles from "./ExhibitorsFinder.module.css";
 
-function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
+function ExhibitorsFinder() {
   const [exhibName, setExhibName] = useState("");
   const [category, setCategory] = useState("");
   const [, setSearchParams] = useSearchParams();
@@ -40,9 +40,10 @@ function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
         <select
           className={styles.select}
           value={category}
+          defaultValue={""}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option disabled selected value="">
+          <option disabled value="">
             Kategoria
           </option>
           {categories.map((c) => (
@@ -62,12 +63,7 @@ function ExhibitorsFinder({ selectedExhibitor, setSelectedExhibitor }) {
             <Spinner />
           ) : (
             exhibitors.map((e) => (
-              <ExhibitorItem
-                key={e.exhib_name}
-                exhibitor={e}
-                selectedExhibitor={selectedExhibitor}
-                setSelectedExhibitor={setSelectedExhibitor}
-              />
+              <ExhibitorItem key={e.exhib_name} exhibitor={e} />
             ))
           )}
         </ul>

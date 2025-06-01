@@ -31,8 +31,8 @@ function AboutUs() {
   return (
     <>
       <Banner>
-        <h1 style={{ color: "white", fontSize: "90px" }}>EXPO </h1>
-        <p style={{ color: "white", fontWeight: "700", fontSize: "20px" }}>
+        <h1 className={styles.bannerHeading}>EXPO </h1>
+        <p className={styles.bannerDesc}>
           Katalog imprez oraz wystawców targowych
         </p>
       </Banner>

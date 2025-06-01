@@ -1,23 +1,21 @@
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-import ExhibitorDetails from "../../../features/user/catalog/ExhibitorDetails/ExhibitorDetails";
 import ExhibitorsFinder from "../../../features/user/catalog/ExhibitorsFinder/ExhibitorsFinder";
 import styles from "./CatalogPage.module.css";
 
 function CatalogPage() {
-  const [selectedExhibitor, setSelectedExhibitor] = useState(null);
-
   return (
     <main className={styles.catalogPage}>
-      <ExhibitorsFinder
-        selectedExhibitor={selectedExhibitor}
-        setSelectedExhibitor={setSelectedExhibitor}
-      />
-
-      <ExhibitorDetails
-        selectedExhibitor={selectedExhibitor}
-        setSelectedExhibitor={setSelectedExhibitor}
-      />
+      <ExhibitorsFinder />
+      <div className={styles.exhibitorModalContainer}>
+        <div className={styles.modalUnactive}>
+          <img src="/arrow.svg" />
+          <p>
+            Wybierz wystawce z listy obok aby wyświetlić więcej informacji...
+          </p>
+        </div>
+        <Outlet />
+      </div>
     </main>
   );
 }

@@ -1,3 +1,21 @@
+.bannerHeading {
+  font-size: 90px;
+}
+.bannerDesc {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (max-width: 475px) {
+  .bannerHeading {
+    font-size: 70px;
+  }
+  .bannerDesc {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
 .aboutUs {
   padding: 50px 180px;
 }

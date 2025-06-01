@@ -6,37 +6,24 @@
   position: relative;
   text-align: justify;
   padding: 25px 35px;
+  box-sizing: content-box;
 }
 .modal a {
   color: black;
   text-decoration: none;
 }
 
-.modalUnactive {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.modalUnactive img {
-  width: 70%;
-}
-.modalUnactive p {
-  color: var(---color-text-tertiary);
-  font-size: 20px;
-  font-family: "Marker Felt";
-}
 .closeBtn {
   position: absolute;
-  top: -14px;
-  right: -14px;
+  top: 3px;
+  right: 3px;
   background-color: black;
   color: white;
   font-weight: 700;
   font-size: 15px;
   padding: 8px 11px;
   border: none;
-  border-radius: 45px;
+  border-radius: 10px;
   cursor: pointer;
 }
 

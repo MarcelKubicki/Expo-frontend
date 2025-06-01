@@ -7,8 +7,8 @@ function Homepage() {
   return (
     <>
       <Banner>
-        <h1 style={{ color: "white" }}>Kalendarz Targowy</h1>
-        <p style={{ color: "white" }}>
+        <h1 className={styles.bannerHeading}>Kalendarz Targowy</h1>
+        <p className={styles.bannerDesc}>
           Wyszukaj interesujące cię wydarzenie i weź w nim udział
         </p>
       </Banner>

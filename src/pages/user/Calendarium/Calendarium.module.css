@@ -1,3 +1,19 @@
-p {
-  font-size: 25px;
+.bannerHeading {
+  font-size: 50px;
+}
+.bannerDesc {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media (max-width: 575px) {
+  .bannerHeading {
+    font-size: 35px;
+  }
+  .bannerDesc {
+    padding: 0 12px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+  }
 }

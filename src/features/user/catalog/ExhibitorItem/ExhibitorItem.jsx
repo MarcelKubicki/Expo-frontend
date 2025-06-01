@@ -1,21 +1,28 @@
+import { Link, useParams } from "react-router-dom";
+
 import styles from "./ExhibitorItem.module.css";
 
-function ExhibitorItem({ exhibitor, selectedExhibitor, setSelectedExhibitor }) {
+function ExhibitorItem({ exhibitor }) {
   const { id, img_url, exhib_name, categ_name, short_desc } = exhibitor;
-  return (
-    <li
-      className={`${styles.prevContainer} ${
-        id === selectedExhibitor ? styles.activePrevContainer : ""
-      }`}
-      onClick={() => setSelectedExhibitor(id === selectedExhibitor ? null : id)}
-    >
-      <img src={img_url} />
+  const { exhibitorId } = useParams();
+  const selectedExhibitor = Number(exhibitorId);
 
-      <div>
-        <p className={styles.name}>{exhib_name}</p>
-        <p className={styles.description}>{short_desc}</p>
-      </div>
-      <div className={styles.category}>{categ_name}</div>
+  return (
+    <li>
+      <Link
+        to={`${id}`}
+        className={`${styles.prevContainer} ${
+          id === selectedExhibitor ? styles.activePrevContainer : ""
+        }`}
+      >
+        <img src={img_url} />
+
+        <div>
+          <p className={styles.name}>{exhib_name}</p>
+          <p className={styles.description}>{short_desc}</p>
+        </div>
+        <div className={styles.category}>{categ_name}</div>
+      </Link>
     </li>
   );
 }

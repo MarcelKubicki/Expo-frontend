@@ -1,3 +1,6 @@
+import { IoIosMail } from "react-icons/io";
+import { FaPhoneAlt } from "react-icons/fa";
+
 import styles from "./Footer.module.css";
 
 function Footer() {
@@ -13,11 +16,11 @@ function Footer() {
       <div className={styles.contact}>
         <h4>Kontakt</h4>
         <div>
-          <img src="/phone-call.png" />
+          <FaPhoneAlt />
           <p>+48 123 234 547</p>
         </div>
         <div>
-          <img src="/mail.png" />
+          <IoIosMail />
           <p>biuro@expo.pl</p>
         </div>
       </div>
