@@ -1,17 +1,18 @@
-import styles from "./CreateEventPage.module.css";
-import TextEditor from "../../../features/admin/createEvent/TextEditor/TextEditor";
-import SelectLocalization from "../../../ui/SelectLocalization";
-import SelectCategory from "../../../ui/SelectCategory";
+import { useEffect, useState } from "react";
+import { useEditor } from "@tiptap/react";
 import Document from "@tiptap/extension-document";
 import Heading from "@tiptap/extension-heading";
 import Paragraph from "@tiptap/extension-paragraph";
 import Bold from "@tiptap/extension-bold";
 import Underline from "@tiptap/extension-underline";
 import Text from "@tiptap/extension-text";
-import { useEffect, useState } from "react";
-import { useEditor } from "@tiptap/react";
-import axios from "../../../services/axios";
+
 import { useAxiosPrivate } from "../../../hooks/useAxiosPrivate";
+import TextEditor from "../../../features/admin/createEvent/TextEditor/TextEditor";
+import SelectLocalization from "../../../ui/SelectLocalization";
+import SelectCategory from "../../../ui/SelectCategory";
+import axios from "../../../services/axios";
+import styles from "./CreateEventPage.module.css";
 
 function CreateEventPage() {
   const editor = useEditor({
@@ -232,11 +233,16 @@ function CreateEventPage() {
                 />
 
                 <label htmlFor="localization">Lokalizacja:</label>
-                <SelectLocalization
+                {/* <SelectLocalization
                   localization={localization}
                   setLocalization={setLocalization}
                   required
-                />
+                /> */}
+                <select defaultValue={""}>
+                  <option value="">Lokalizacja</option>
+                  <option value="Kielce">Kielce</option>
+                  <option value="Warszawa">Warszawa</option>
+                </select>
               </div>
 
               <div className={styles.group}>
@@ -251,11 +257,11 @@ function CreateEventPage() {
                 />
 
                 <label htmlFor="category">Kategoria:</label>
-                <SelectCategory
+                {/* <SelectCategory
                   category={category}
                   setCategory={setCategory}
                   required
-                />
+                /> */}
               </div>
             </div>
             <div className={styles.photosContainer}>

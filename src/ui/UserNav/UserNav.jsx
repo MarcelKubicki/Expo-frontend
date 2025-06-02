@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "./UserNav.module.css";
 import { Link } from "react-router-dom";
+
 import { useAuth } from "../../context/AuthProvider";
+import styles from "./UserNav.module.css";
 
 function UserNav({ username }) {
   const [extended, setExtended] = useState(false);

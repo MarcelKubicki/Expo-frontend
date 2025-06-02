@@ -1,6 +1,6 @@
 .prevContainer {
   background-color: var(--color-ui-primary);
-  color: var(--color-text-secondary);
+  color: white;
   padding: 13px 15px;
   margin-bottom: 5px;
   display: flex;

@@ -1,10 +1,4 @@
-function SelectLocalization({
-  register,
-  localization,
-  setLocalization,
-  className,
-  required = false,
-}) {
+function SelectLocalization({ register, className, required = false }) {
   return (
     <select
       className={className}

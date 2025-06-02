@@ -1,5 +1,9 @@
-import styles from "./ExhibitorPrev.module.css";
 import { useEffect } from "react";
+import { FaAngleRight } from "react-icons/fa6";
+import { IoMdPin, IoIosMail } from "react-icons/io";
+import { AiOutlineGlobal } from "react-icons/ai";
+
+import styles from "./ExhibitorPrev.module.css";
 
 function ExhibitorPrev({
   exhibitorData,
@@ -56,9 +60,7 @@ function ExhibitorPrev({
         )}
         <p className={styles.exhibitorName}>{name}</p>
         <div className={styles.arrow}>
-          <img
-            src="/right-arrow.png"
-            alt="next"
+          <FaAngleRight
             style={selectedStand === id ? { transform: "rotate(90deg)" } : {}}
           />
         </div>
@@ -72,15 +74,15 @@ function ExhibitorPrev({
                 <b>{name}</b>
               </p>
               <div className={styles.row}>
-                <img src="/localization.png" />
+                <IoMdPin />
                 <p>{adres}</p>
               </div>
               <div className={styles.row}>
-                <img src="/mail.png" />
+                <IoIosMail />
                 <p>{mail}</p>
               </div>
               <div className={styles.row}>
-                <img src="/domain.png" />
+                <AiOutlineGlobal />
                 <a href={site} target="_blank" rel="noopener noreferrer">
                   {site}
                 </a>

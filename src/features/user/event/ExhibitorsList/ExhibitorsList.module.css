@@ -23,7 +23,7 @@
   width: 100%;
   border-radius: 5px;
   background-color: var(--color-ui-primary);
-  color: var(--color-text-secondary);
+  color: white;
   font-size: 19px;
   font-weight: 700;
   padding: 17px 0;

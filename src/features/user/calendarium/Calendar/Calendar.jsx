@@ -1,9 +1,8 @@
-import styles from "./Calendar.module.css";
+import { useEvents } from "../useEvents";
 import Selector from "../Selector/Selector";
 import EventsGrid from "../EventsGrid/EventsGrid";
-
-import { useEvents } from "../useEvents";
 import Spinner from "../../../../ui/Spinner/Spinner";
+import styles from "./Calendar.module.css";
 
 function Calendar() {
   const { isLoading, error, events } = useEvents();

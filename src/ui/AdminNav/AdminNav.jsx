@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import styles from "./AdminNav.module.css";
+
 import { useAuth } from "../../context/AuthProvider";
+import styles from "./AdminNav.module.css";
 
 function AdminNav() {
   const { auth, handleLogout } = useAuth();
