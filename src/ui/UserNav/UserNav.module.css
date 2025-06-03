@@ -1,10 +1,11 @@
 .userNavContainer {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   position: relative;
   font-size: 17px;
   cursor: pointer;
+}
+.userNavTrigger {
+  display: flex;
+  gap: 6px;
 }
 
 .userNavContainer img {
@@ -17,15 +18,28 @@
 
 .userNavContainer .userNavPopup {
   position: absolute;
-  bottom: -110px;
-  right: -20px;
-  background-color: white;
+  bottom: -105px;
+  right: 0;
+  background-color: var(--color-brand-tertiary);
   flex-direction: column;
-  gap: 7px;
+  gap: 10px;
   white-space: nowrap;
   border-radius: 5px;
-  padding: 5px 8px;
+  padding: 12px 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
+
+.userNavContainer:hover .userNavPopup {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 .userNavContainer .userNavPopup .line {
   cursor: pointer;
   padding: 0;

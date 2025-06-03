@@ -1,8 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import styles from "./Login.module.css";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../context/AuthProvider";
 import axios from "../../../services/axios";
+import styles from "./Login.module.css";
 
 function Login() {
   const { setAuth, setProfileInfo } = useAuth();

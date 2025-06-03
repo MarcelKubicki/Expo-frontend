@@ -17,3 +17,19 @@ export async function getEvents(searchParams) {
     throw error;
   }
 }
+
+export async function getUpcoming() {
+  try {
+    const res = await fetch(`${BASE_URL}/events/upcoming_four`);
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+}

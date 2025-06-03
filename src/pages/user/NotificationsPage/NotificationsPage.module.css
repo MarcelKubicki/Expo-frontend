@@ -7,7 +7,7 @@
 
 .modal {
   height: 100%;
-  background-color: rgb(221, 221, 221);
+  background-color: var(--color-brand-tertiary);
   border-radius: 10px;
   position: relative;
   text-align: justify;
@@ -23,7 +23,7 @@
 }
 
 .mainContainer .modal .listContainer li {
-  background-color: white;
+  background-color: var(--color-text-secondary);
   margin-bottom: 10px;
   padding: 10px 15px;
   display: flex;
@@ -45,4 +45,11 @@
 
 .mainContainer .modal h1 {
   margin-bottom: 12px;
+}
+.xMark {
+  color: var(--color-button-decline);
+}
+
+.checkMark {
+  color: var(--color-button-accept);
 }

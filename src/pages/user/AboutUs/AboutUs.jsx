@@ -1,33 +1,21 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUserTie, FaRegCalendarAlt } from "react-icons/fa";
 import { MdGroups } from "react-icons/md";
 import { BsFillBuildingsFill } from "react-icons/bs";
 
+import { useWindowWidth } from "../../../hooks/useWindowWidth";
+import { useUpcoming } from "../../../features/user/calendarium/useUpcoming";
+import Spinner from "../../../ui/Spinner/Spinner";
 import MapPolandSvg from "../../../ui/MapPolandSvg";
 import Banner from "../../../ui/Banner/Banner";
 import Footer from "../../../ui/Footer/Footer";
-import axios from "../../../services/axios";
-
 import styles from "./AboutUs.module.css";
-import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
 function AboutUs() {
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const { isLoading, data: upcomingEvents, error } = useUpcoming();
   const width = useWindowWidth();
   const isMobile = width < 800;
 
-  useEffect(function () {
-    async function fetch_upcoming() {
-      try {
-        const response = await axios.get("/events/upcoming_four");
-        setUpcomingEvents(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetch_upcoming();
-  }, []);
   return (
     <>
       <Banner>
@@ -90,11 +78,15 @@ function AboutUs() {
         <div className={styles.upcomingEventsContainer}>
           <p className={styles.upcomingEventsTitle}>Nadchodzące wydarzenia</p>
           <div className={styles.upcomingEventsLinks}>
-            {upcomingEvents.map((e) => (
-              <Link to={`/event/${e.id}`} key={e.id}>
-                <img src={e.img_url} />
-              </Link>
-            ))}
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              upcomingEvents.map((e) => (
+                <Link to={`/event/${e.id}`} key={e.id}>
+                  <img src={e.img_url} />
+                </Link>
+              ))
+            )}
           </div>
         </div>
 

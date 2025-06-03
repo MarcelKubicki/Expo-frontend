@@ -1,8 +1,8 @@
-import styles from "./ProfilePage.module.css";
-import SelectCategory from "../../../ui/SelectCategory";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../../context/AuthProvider";
+import SelectCategory from "../../../ui/SelectCategory";
 import axios from "../../../services/axios";
+import styles from "./ProfilePage.module.css";
 
 function ProfilePage() {
   const { auth, profileInfo, setProfileInfo } = useAuth();
@@ -17,12 +17,6 @@ function ProfilePage() {
 
   const [isEditing, setIsEditing] = useState("");
   const [file, setFile] = useState(null);
-
-  // useEffect(function(){
-  //   if (!file) return
-
-  //   const file =
-  // },[file]);
 
   function handleEdit() {
     setIsEditing((prev) => !prev);

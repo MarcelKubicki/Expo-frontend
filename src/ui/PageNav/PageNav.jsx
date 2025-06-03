@@ -104,15 +104,15 @@ function PageNav() {
           {isDark ? <FaSun /> : <FaMoon />}
         </button>
 
-        <div>
-          {auth?.username ? (
-            <UserNav username={auth.username} />
-          ) : (
+        {auth?.username ? (
+          <UserNav username={auth.username} />
+        ) : (
+          <div>
             <Link to="/login">
               <button className={styles.loginBtn}>Zaloguj</button>
             </Link>
-          )}
-        </div>
+          </div>
+        )}
       </nav>
     </header>
   );

@@ -1,39 +1,32 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../../context/AuthProvider";
 import styles from "./UserNav.module.css";
 
 function UserNav({ username }) {
-  const [extended, setExtended] = useState(false);
   const { handleLogout } = useAuth();
 
   return (
-    <div
-      className={styles.userNavContainer}
-      onClick={() => {
-        setExtended((ext) => !ext);
-      }}
-    >
-      <img src="/user.png" />
-      {username}
+    <div className={styles.userNavContainer}>
+      <div className={styles.userNavTrigger}>
+        <FaUserCircle />
+        <span>{username}</span>
+      </div>
 
-      {extended && (
-        <div className={styles.userNavPopup}>
-          <Link className={styles.line} to="/profile">
-            Podgląd profilu
-          </Link>
-          <Link to="/notifications" className={styles.line}>
-            Powiadomienia
-          </Link>
-          <div
-            className={`${styles.line} ${styles.logout}`}
-            onClick={handleLogout}
-          >
-            Wyloguj
-          </div>
+      <div className={styles.userNavPopup}>
+        <Link className={styles.line} to="/profile">
+          Podgląd profilu
+        </Link>
+        <Link to="/notifications" className={styles.line}>
+          Powiadomienia
+        </Link>
+        <div
+          className={`${styles.line} ${styles.logout}`}
+          onClick={handleLogout}
+        >
+          Wyloguj
         </div>
-      )}
+      </div>
     </div>
   );
 }
